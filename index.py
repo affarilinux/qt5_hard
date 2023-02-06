@@ -10,13 +10,16 @@ from app_principal.fe import GuiFrontPrincipal
 from app_principal.be_bateria import Bateria100
 from app_principal.be_ram import BE_Ram
 from app_principal.be_processador import Processador100
+from app_principal.be_temperatura import Temperatura100
+from app_principal.be_cooler      import CoolerAtivo
+
 
 from fechar_janela.key import KeyBoard
 
 from appsinit.init import SubJanela
 class Principal(
     GuiFrontPrincipal,Bateria100,BE_Ram,
-    Processador100,
+    Processador100,Temperatura100,CoolerAtivo,
     KeyBoard,
     SubJanela,
     QMainWindow):

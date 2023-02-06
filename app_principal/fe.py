@@ -41,10 +41,10 @@ class GuiFrontPrincipal(QMainWindow):
         self.BUTON_RAM.setStyleSheet("border-radius : 60;  color: #FFFF00; font: bold; font-size: 25px;border : 3px solid #FFFF00")
         self.BUTON_RAM.clicked.connect(self.j_b) 
 
-        dfgg2 = "TEMPERATURA \nMEDIA\n100 ºC"
-        BUTON_TM = QPushButton(dfgg2, self) 
-        BUTON_TM.setGeometry(NUM_100, 230,NUM_140, NUM_140) 
-        BUTON_TM.setStyleSheet("border-radius : 70;  color: #FFFF00; font: bold; font-size: 16px;border : 4px solid #FFFF00")
+        #dfgg2 = "TEMPERATURA \nMEDIA\n100 ºC"
+        self.BUTON_TM = QPushButton( self) 
+        self.BUTON_TM.setGeometry(NUM_100, 230,NUM_140, NUM_140) 
+        self.BUTON_TM.setStyleSheet("border-radius : 70;  color: #FFFF00; font: bold; font-size: 16px;border : 4px solid #FFFF00")
         #BUTON_BATERIA.clicked.connect(self.clickme) 
 
         #dfgg3 = "PROCESSADOR\n100 %"
@@ -53,10 +53,10 @@ class GuiFrontPrincipal(QMainWindow):
         self.BUTON_PROCESSADOR.setStyleSheet("border-radius : 60;  color: #FFFF00; font: bold; font-size: 14px;border : 5px solid #FFFF00")
         #BUTON_BATERIA.clicked.connect(self.clickme) 
 
-        dfgg4 = "COOLER\n 4500 RPM"
-        BUTON_COOLER = QPushButton(dfgg4, self) 
-        BUTON_COOLER.setGeometry(NUM_110, 410, NUM_120, NUM_120) 
-        BUTON_COOLER.setStyleSheet("border-radius : 60;  color: #FFFF00; font: bold; font-size: 21px;border : 2px solid #FFFF00")
+        #dfgg4 = "COOLER\n 4500 RPM"
+        self.BUTON_COOLER = QPushButton( self) 
+        self.BUTON_COOLER.setGeometry(NUM_110, 410, NUM_120, NUM_120) 
+        self.BUTON_COOLER.setStyleSheet("border-radius : 60;  color: #FFFF00; font: bold; font-size: 21px;border : 2px solid #FFFF00")
         #BUTON_BATERIA.clicked.connect(self.clickme) 
 
         LABEL_MAIN_FIXO = QLabel(self)
@@ -74,4 +74,8 @@ class GuiFrontPrincipal(QMainWindow):
         self.chamada_qtimerbateria()        
         self.ps_ram()
         self.processador_frequencia()
+        self.temperatura_lib()
+        self.leitura_fans()
+
+
         

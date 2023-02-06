@@ -17,6 +17,7 @@ class Processador100(QMainWindow):
 
          # calcula porcentagm
         calculo_processos_dados     = ( dados_presente * NUM_100 ) / maximo_processador
+        
 
         # filtra o float
         self.filtra_calculo_sistema = round ( calculo_processos_dados, NUM_2 )
