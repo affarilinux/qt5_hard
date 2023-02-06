@@ -47,10 +47,10 @@ class GuiFrontPrincipal(QMainWindow):
         BUTON_TM.setStyleSheet("border-radius : 70;  color: #FFFF00; font: bold; font-size: 16px;border : 4px solid #FFFF00")
         #BUTON_BATERIA.clicked.connect(self.clickme) 
 
-        dfgg3 = "PROCESSADOR\n100 %"
-        BUTON_PROCESSADOR = QPushButton(dfgg3, self) 
-        BUTON_PROCESSADOR.setGeometry(10, 330, NUM_120, NUM_120) 
-        BUTON_PROCESSADOR.setStyleSheet("border-radius : 60;  color: #FFFF00; font: bold; font-size: 14px;border : 5px solid #FFFF00")
+        #dfgg3 = "PROCESSADOR\n100 %"
+        self.BUTON_PROCESSADOR = QPushButton( self) 
+        self.BUTON_PROCESSADOR.setGeometry(10, 330, NUM_120, NUM_120) 
+        self.BUTON_PROCESSADOR.setStyleSheet("border-radius : 60;  color: #FFFF00; font: bold; font-size: 14px;border : 5px solid #FFFF00")
         #BUTON_BATERIA.clicked.connect(self.clickme) 
 
         dfgg4 = "COOLER\n 4500 RPM"
@@ -60,7 +60,7 @@ class GuiFrontPrincipal(QMainWindow):
         #BUTON_BATERIA.clicked.connect(self.clickme) 
 
         LABEL_MAIN_FIXO = QLabel(self)
-        LABEL_MAIN_FIXO.setText("ctrl+q sair")
+        LABEL_MAIN_FIXO.setText("ctrl+Q sair")
         LABEL_MAIN_FIXO.move(NUM_5,520)
         LABEL_MAIN_FIXO.resize(60,20)
         LABEL_MAIN_FIXO.setStyleSheet('QLabel{color: #FFFF00; font: bold; font-size: 11px}')# YELLOW_
@@ -73,3 +73,5 @@ class GuiFrontPrincipal(QMainWindow):
     def be_app_principal(self):
         self.chamada_qtimerbateria()        
         self.ps_ram()
+        self.processador_frequencia()
+        

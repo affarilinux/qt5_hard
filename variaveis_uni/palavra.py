@@ -1,0 +1,2 @@
+truepal = True
+falsepal = False
