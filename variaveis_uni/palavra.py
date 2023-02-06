@@ -1,2 +1,4 @@
 truepal = True
-falsepal = False
+falsepal =False
+none = None
+

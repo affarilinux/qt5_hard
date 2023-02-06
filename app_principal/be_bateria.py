@@ -1,7 +1,7 @@
 import psutil
 from PyQt5.QtWidgets import QMainWindow
 
-from variaveis_uni.palavra import falsepal,truepal
+from variaveis_uni.palavra import falsepal,truepal,none
 class Bateria100(QMainWindow):
 
     def chamada_qtimerbateria(self):
@@ -21,7 +21,8 @@ class Bateria100(QMainWindow):
         informacao_bateria = psutil.sensors_battery()
 
         # puxa uma informação se esta plugado na internet
-        informacao_carregamento = informacao_bateria.power_plugged      
+        informacao_carregamento = informacao_bateria.power_plugged 
+        est = none
 
         if informacao_carregamento   == truepal :
                 

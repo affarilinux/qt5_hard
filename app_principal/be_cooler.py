@@ -3,7 +3,7 @@ import psutil
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtCore        import QTimer
 
-
+from variaveis_uni.palavra import none
 class CoolerAtivo(QMainWindow):
     
     def __init__( self ):
@@ -20,7 +20,7 @@ class CoolerAtivo(QMainWindow):
 
     def leitura_fans(self):
         fans_leiint = psutil.sensors_fans()
-        fans_sis = None
+        fans_sis = none
 
         if not fans_leiint:
             fans_sis = "COOLER\n S\I"
