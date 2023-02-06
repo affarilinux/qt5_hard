@@ -6,12 +6,13 @@ from PyQt5 import Qt
 from variaveis_uni.numero import NUM_100
 ##SISTEMA
 from app_principal.fe import GuiFrontPrincipal
+from app_principal.be_ram import BE_Ram
 
 from fechar_janela.key import KeyBoard
 
 from appsinit.init import SubJanela
 class Principal(
-    GuiFrontPrincipal,
+    GuiFrontPrincipal,BE_Ram,
     KeyBoard,
     SubJanela,
     QMainWindow):

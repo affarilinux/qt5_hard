@@ -9,7 +9,17 @@ class GuiFrontPrincipal(QMainWindow):
     
     def __init__( self ):
     
-        super ().__init__() # metodo 
+        super ().__init__() # metodo
+        
+
+        qtimer_front = QTimer        ( self )
+
+        qtimer_front.setInterval     ( 5000 )
+        qtimer_front.start           ()
+
+        #chamada de funçãO
+        qtimer_front.timeout.connect ( self.be_app_principal ) 
+
 
         ## sistema fixo
 
@@ -25,11 +35,11 @@ class GuiFrontPrincipal(QMainWindow):
         BUTON_BATERIA.setStyleSheet("border-radius : 65;  color: #FFFF00; font: bold; font-size: 22px;border : 5px solid #FFFF00")
         BUTON_BATERIA.clicked.connect(self.clickme) 
 
-        dfgg1 = "RAM\n100 %"
-        BUTON_RAM = QPushButton(dfgg1, self) 
-        BUTON_RAM.setGeometry(10, 150, NUM_120, NUM_120) 
-        BUTON_RAM.setStyleSheet("border-radius : 60;  color: #FFFF00; font: bold; font-size: 25px;border : 3px solid #FFFF00")
-        BUTON_RAM.clicked.connect(self.j_b) 
+        #dfgg1 = "RAM\n100 %"
+        self.BUTON_RAM = QPushButton(self) 
+        self.BUTON_RAM.setGeometry(10, 150, NUM_120, NUM_120) 
+        self.BUTON_RAM.setStyleSheet("border-radius : 60;  color: #FFFF00; font: bold; font-size: 25px;border : 3px solid #FFFF00")
+        self.BUTON_RAM.clicked.connect(self.j_b) 
 
         dfgg2 = "TEMPERATURA \nMEDIA\n100 ºC"
         BUTON_TM = QPushButton(dfgg2, self) 
@@ -54,7 +64,11 @@ class GuiFrontPrincipal(QMainWindow):
         LABEL_MAIN_FIXO.move(NUM_5,520)
         LABEL_MAIN_FIXO.resize(60,20)
         LABEL_MAIN_FIXO.setStyleSheet('QLabel{color: #FFFF00; font: bold; font-size: 11px}')# YELLOW_
-    
+
+        self.be_app_principal()
     def clickme(self): 
   
         print("pressed") 
+
+    def be_app_principal(self):
+        self.ps_ram()
