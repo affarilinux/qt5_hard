@@ -18,7 +18,7 @@ class Janela_bateria(QMainWindow):
 
         self.setGeometry(600, 150, 800, 400) #j-XY app-XY
         self.setStyleSheet("background-color: #B0E0E6")#
-        self.setWindowTitle("HARDWARE")
+        self.setWindowTitle("HARDWARE-RAM")
 
 
 
