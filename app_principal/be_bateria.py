@@ -6,6 +6,7 @@ class Bateria100(QMainWindow):
 
     def chamada_qtimerbateria(self):
 
+        #---------------------------------------------------------------
         # chama os dados para a janela
         BATERIA_sistema = psutil.sensors_battery()
 
@@ -15,8 +16,25 @@ class Bateria100(QMainWindow):
         # transforma em int
         entrada_informacao = int(nivel_bateria)
 
+        #---------------------------------------------------------------
+        # puxa os dado do sistema operacional
+        informacao_bateria = psutil.sensors_battery()
+
+        # puxa uma informação se esta plugado na internet
+        informacao_carregamento = informacao_bateria.power_plugged      
+
+        if informacao_carregamento   == True :
+                
+               est = "ca"
+                
+
+        elif informacao_carregamento == False :
+                est = "des"
+        
+        #---------------------------------------------------------------
         # chama a janela'
-        self.BUTON_BATERIA.setText("BATERIA\nca 00:00\n{} %".format(entrada_informacao))
+        self.BUTON_BATERIA.setText(
+            "BATERIA\n{} 00:00\n{} %".format(est,entrada_informacao))
 
        
        
