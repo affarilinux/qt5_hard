@@ -29,11 +29,11 @@ class GuiFrontPrincipal(QMainWindow):
         LABEL_MAIN_FIXO.resize(145,40)
         LABEL_MAIN_FIXO.setStyleSheet('QLabel{color: #FFFF00; font: bold; font-size: 25px}')# YELLOW
         
-        dfgg = "BATERIA\nca 00:00\n 100 %"
-        BUTON_BATERIA = QPushButton(dfgg, self) 
-        BUTON_BATERIA.setGeometry(NUM_110, 60,NUM_130,NUM_130) 
-        BUTON_BATERIA.setStyleSheet("border-radius : 65;  color: #FFFF00; font: bold; font-size: 22px;border : 5px solid #FFFF00")
-        BUTON_BATERIA.clicked.connect(self.clickme) 
+        #dfgg = "BATERIA\nca 00:00\n 100 %"
+        self.BUTON_BATERIA = QPushButton( self) 
+        self.BUTON_BATERIA.setGeometry(NUM_110, 60,NUM_130,NUM_130) 
+        self.BUTON_BATERIA.setStyleSheet("border-radius : 65;  color: #FFFF00; font: bold; font-size: 22px;border : 5px solid #FFFF00")
+        self.BUTON_BATERIA.clicked.connect(self.clickme) 
 
         #dfgg1 = "RAM\n100 %"
         self.BUTON_RAM = QPushButton(self) 
@@ -71,4 +71,5 @@ class GuiFrontPrincipal(QMainWindow):
         print("pressed") 
 
     def be_app_principal(self):
+        self.chamada_qtimerbateria()        
         self.ps_ram()
