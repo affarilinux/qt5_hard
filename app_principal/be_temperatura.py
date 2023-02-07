@@ -3,7 +3,7 @@ import psutil
 from PyQt5.QtWidgets import QMainWindow
 
 
-from variaveis_uni.numero import NUM_0,NUM_2,NUM_5
+from variaveis_uni.numero import NUM_0,NUM_1,NUM_2,NUM_5
 
 class Temperatura100(QMainWindow):
     
@@ -12,7 +12,7 @@ class Temperatura100(QMainWindow):
         processador_temp = psutil.sensors_temperatures()['acpitz'][NUM_0]
 
         core_temp        = psutil.sensors_temperatures()['coretemp'][NUM_0]
-        core_temp1       = psutil.sensors_temperatures()['coretemp'][1]
+        core_temp1       = psutil.sensors_temperatures()['coretemp'][NUM_1]
         core_temp2       = psutil.sensors_temperatures()['coretemp'][NUM_2]
 
         processador_temp_cur = processador_temp.current

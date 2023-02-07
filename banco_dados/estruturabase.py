@@ -4,7 +4,7 @@ class BancoDadosInit:
 
     ##
     def ativar_banco(self):
-        self.bancovar = sqlite3.connect('banco_dadosbase/banco_hard.db')
+        self.bancovar = sqlite3.connect('banco_dados/banco_hard.db')
 
         self.cursorsq = self.bancovar.cursor()
 
