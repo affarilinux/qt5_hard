@@ -21,13 +21,14 @@ from appsinit.init import SubJanela
 
 from banco_dados.estruturabase import BancoDadosInit
 from banco_dados.criartabela import CriarTabela
+from banco_dados.verificacao import Verificacao
 
 class Principal(
     GuiFrontPrincipal,Bateria100,BE_Ram,
     Processador100,Temperatura100,CoolerAtivo,
     KeyBoard,
     SubJanela,
-    BancoDadosInit,CriarTabela,
+    BancoDadosInit,CriarTabela,Verificacao,
     QMainWindow):
 
     def __init__(self):

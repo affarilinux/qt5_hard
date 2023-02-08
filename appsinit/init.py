@@ -15,10 +15,12 @@ class SubJanela(QMainWindow):
 # /home/waghtom/Downloads/CTRL-C/envs/QT5_hard/qt5_hard/appsinit/init.py (python
 from app_ram.fe2 import GUIFe2Ram
 from banco_dados.estruturabase import BancoDadosInit
+from app_ram.be_ram import BeRam
 
 class Janela_bateria(
     GUIFe2Ram,
     BancoDadosInit,
+    BeRam,
     QMainWindow):
     
     def __init__(self):

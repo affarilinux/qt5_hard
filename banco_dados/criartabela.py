@@ -14,5 +14,8 @@ class CriarTabela:
             RAM_MAXIMO INT,
             RAM_APRESENTAR INT
             )""")
-            
+
+        self.organizacao_tabelas_inicializacao()
+
+        self.commit_banco()
         self.sair_banco()
