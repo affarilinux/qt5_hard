@@ -1,6 +1,6 @@
 
 from variaveis_uni.numero import NUM_1,NUM_100,NUM_0
-from variaveis_uni.palavra import none
+from variaveis_uni.ESTADO import none
 
 class Verificacao:
    

@@ -1,7 +1,7 @@
 import psutil
 from PyQt5.QtWidgets import QMainWindow
 
-from variaveis_uni.palavra import falsepal,truepal,none
+from variaveis_uni.ESTADO import falsepal,truepal,none
 class Bateria100(QMainWindow):
 
     def chamada_qtimerbateria(self):

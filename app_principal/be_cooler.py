@@ -3,7 +3,7 @@ import psutil
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtCore        import QTimer
 
-from variaveis_uni.palavra import none
+from variaveis_uni.ESTADO import none
 class CoolerAtivo(QMainWindow):
     
     def __init__( self ):

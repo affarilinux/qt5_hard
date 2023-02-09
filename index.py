@@ -5,7 +5,7 @@ from PyQt5.QtGui      import QIcon
 
 ##VARIAVEIS
 from variaveis_uni.numero import NUM_100
-from variaveis_uni.palavra import truepal,falsepal
+from variaveis_uni.ESTADO import truepal,falsepal
 from variaveis_uni.universal import QICONE_BARRA_DE_TAREFA
 ##SISTEMA
 from app_principal.fe import GuiFrontPrincipal

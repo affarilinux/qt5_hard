@@ -4,6 +4,7 @@ import psutil
 
 ##VARIAVEIS
 from variaveis_uni.numero import NUM_0,NUM_1,NUM_2,NUM_100
+from variaveis_uni.PALAVRA import RAM_LT
 
 class BE_Ram(QMainWindow):
     
@@ -38,44 +39,44 @@ class BE_Ram(QMainWindow):
             
             if calculo_filtro_informacao < sel[0]:
 
-                self.var_1 = self.var_1 + NUM_1
+                self.ap_ram_processo('--',sel,NUM_0,calculo_filtro_informacao)
 
-                if self.var_1 == NUM_1:
-
-                    self.BUTON_RAM.setText("RAM \n-- {} %".format(sel[0]))
-
-                else:
-                    self.BUTON_RAM.setText("RAM\n {} %".format(calculo_filtro_informacao))
-
-                    if self.var_1 == 3:
-
-                        self.var_1 = NUM_0
+               
             elif calculo_filtro_informacao >= sel[0] and calculo_filtro_informacao <= sel[1]:
-    
-                self.BUTON_RAM.setText("RAM\n {} %".format(calculo_filtro_informacao))
 
-                if self.var_1 != NUM_0:
-
-                    self.var_1 = NUM_0
-                    
+                self.ap_ram_normal(calculo_filtro_informacao)
+            
+            elif calculo_filtro_informacao > sel[1]:
+                
+                self.ap_ram_processo('++',sel,NUM_1,calculo_filtro_informacao)
+                
         elif sel[2] == NUM_0:
     
-            self.BUTON_RAM.setText("RAM\n {} %".format(calculo_filtro_informacao))
+            self.ap_ram_normal(calculo_filtro_informacao)
 
-            if self.var_1 != NUM_0:
-
-                self.var_1 = NUM_0
-
-
-
-        
-    
-            
-
-       
         self.sair_banco()
 
-        
+    ##------------------------------------------------------------------
+    def ap_ram_normal(self,cfi):
 
-        
+        self.BUTON_RAM.setText("{}\n {} %".format(RAM_LT,cfi))
+
+        if self.var_1 != NUM_0:
+
+            self.var_1 = NUM_0
+
+    def ap_ram_processo(self,sinal,sel_,NU,cfii):
+
+        self.var_1 = self.var_1 + NUM_1
+
+        if self.var_1 == NUM_1:
+
+            self.BUTON_RAM.setText("{}\n{} {} %".format(RAM_LT,sinal,sel_[NU]))
+
+        else:
+            self.BUTON_RAM.setText("{}\n {} %".format(RAM_LT,cfii))
+
+            if self.var_1 == 3:
+
+                self.var_1 = NUM_0    
 

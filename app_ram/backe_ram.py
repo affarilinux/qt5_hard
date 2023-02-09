@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow
 
 from variaveis_uni.numero import NUM_0,NUM_1
-from variaveis_uni.palavra import none,truepal,falsepal
+from variaveis_uni.ESTADO import none,truepal,falsepal
 
 class BeRam(QMainWindow):
 

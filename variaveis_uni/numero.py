@@ -1,6 +1,7 @@
 NUM_0 = 0
 NUM_1 = 1
 NUM_2 = 2
+NUM_3 = 3
 NUM_5 = 5
 
 NUM_10 = 10
