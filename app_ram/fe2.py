@@ -44,11 +44,10 @@ class GUIFe2Ram(QMainWindow):
         self.botao2_r2.setStyleSheet('QPushButton{background-color: #EE82EE; font: bold; font-size: 18px}')
         self.botao2_r2.clicked.connect(self.gravar_dbram)
 
-        self.QCB_C = QCheckBox(" APRESENTAR",self)
+        self.QCB_C = QCheckBox(" APRESENTAR AVISO",self)
         self.QCB_C.move(NUM_100,190)
-        self.QCB_C.resize(180,NUM_30)
+        self.QCB_C.resize(250,NUM_30)
         self.QCB_C.setStyleSheet('QCheckBox{font: bold; font-size: 20px;border : 2px solid #EE82EE}')# Violet
-        #self.QCB_C.stateChanged.connect(self.check_box_estado)
         self.QCB_C.clicked.connect(self.check_box_estado)
 
         
