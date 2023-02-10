@@ -63,3 +63,5 @@ class BeRam(QMainWindow):
 
         self.commit_banco()
         self.sair_banco()
+    
+    

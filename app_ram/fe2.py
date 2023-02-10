@@ -16,7 +16,6 @@ class GUIFe2Ram(QMainWindow):
         self.SPINR2_MINIMO.setStyleSheet('QSpinBox{background-color: #EE82EE;font: bold; font-size: 20px}')# Violet
         self.SPINR2_MINIMO.setMaximum(NUM_100)
         self.SPINR2_MINIMO.setMinimum(NUM_1)
-        #self.spin.valueChanged.connect(self.widget_processador121)
 
 
         LABEL_INFO_M = QLabel(self)

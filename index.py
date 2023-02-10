@@ -14,6 +14,7 @@ from app_principal.be_ram import BE_Ram
 from app_principal.be_processador import Processador100
 from app_principal.be_temperatura import Temperatura100
 from app_principal.be_cooler      import CoolerAtivo
+from app_principal.be_aviso import AvisoSon
 
 from fechar_janela.key import KeyBoard
 
@@ -26,6 +27,7 @@ from banco_dados.verificacao import Verificacao
 class Principal(
     GuiFrontPrincipal,Bateria100,BE_Ram,
     Processador100,Temperatura100,CoolerAtivo,
+    AvisoSon,
     KeyBoard,
     SubJanela,
     BancoDadosInit,CriarTabela,Verificacao,

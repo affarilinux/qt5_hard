@@ -73,6 +73,9 @@ class BE_Ram(QMainWindow):
 
             self.BUTON_RAM.setText("{}\n{} {} %".format(RAM_LT,sinal,sel_[NU]))
 
+            ## sinal de aviso tocar
+            self.var_aviso_son =NUM_1
+
         else:
             self.BUTON_RAM.setText("{}\n {} %".format(RAM_LT,cfii))
 

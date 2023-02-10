@@ -83,5 +83,8 @@ class GuiFrontPrincipal(QMainWindow):
         self.temperatura_lib()
         self.leitura_fans()
 
+        ##
+        self.aviso_son()
+
 
         
