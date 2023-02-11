@@ -28,3 +28,10 @@ class AvisoSon(QMainWindow):
             self.player.play()
 
             self.var_aviso_son = NUM_0
+
+
+    def funcao_if_son(self):
+
+         ## sinal de aviso tocar
+            if self.var_aviso_son == NUM_0:
+                self.var_aviso_son =NUM_1

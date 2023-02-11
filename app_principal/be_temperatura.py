@@ -116,8 +116,9 @@ class Temperatura100(QMainWindow):
 
             elif i1 == NUM_5:
                 self.apresentar_temp(TEMPERATURA_LT,ap1)
-            
 
+            self.funcao_if_son()
+            
         ##----------------------------------------
         elif self.var_2 != NUM_0:
 
