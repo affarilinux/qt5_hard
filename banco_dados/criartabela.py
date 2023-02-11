@@ -15,6 +15,16 @@ class CriarTabela:
             RAM_APRESENTAR INT
             )""")
 
+        self.cursorsq.execute(
+            """CREATE TABLE if not exists TEMPERATURA(
+            ID_TEMP INTEGER PRIMARY KEY AUTOINCREMENT,
+            TEMP_MIN INT,
+            TEMP_MAX INT,
+            TEMP_APRESENTAR INT
+            )""")
+
+
+
         self.organizacao_tabelas_inicializacao()
 
         self.commit_banco()
