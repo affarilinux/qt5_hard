@@ -3,7 +3,8 @@ import psutil
 from PyQt5.QtWidgets import QMainWindow
 
 
-from variaveis_uni.numero import NUM_0,NUM_1,NUM_2,NUM_5
+from variaveis_uni.numero import NUM_0,NUM_1,NUM_2,NUM_3,NUM_4,NUM_5
+from variaveis_uni.PALAVRA import TEMPERATURA_LT
 
 class Temperatura100(QMainWindow):
 
@@ -38,7 +39,7 @@ class Temperatura100(QMainWindow):
         except KeyError:
 
             self.calculo_temperatura (processador_temp_cur, core_temp_cur,
-                core_temp1_cur,core_temp2_cur, 0,4 )
+                core_temp1_cur,core_temp2_cur, NUM_0,NUM_4 )
 
          ##---------------------------------------------------------------------
        
@@ -51,42 +52,42 @@ class Temperatura100(QMainWindow):
         self.cursorsq.execute("SELECT TEMP_MIN,TEMP_MAX,TEMP_APRESENTAR FROM  TEMPERATURA WHERE ID_TEMP = ?",(NUM_1,))
         SELEC = self.cursorsq.fetchone()
 
-        if SELEC[2] ==  NUM_1:
+        if SELEC[NUM_2] ==  NUM_1:
             
-            if ptc >= SELEC[1]:
+            if ptc >= SELEC[NUM_1]:
                 
                 self.ap_temp_t1(NUM_0,ptc,calculosoma)
 
-            elif  ctc >= SELEC[1]:
+            elif  ctc >= SELEC[NUM_1]:
                 
                 self.ap_temp_t1(NUM_1,ctc,calculosoma)
             
-            elif  ctc1 >= SELEC[1]:
+            elif  ctc1 >= SELEC[NUM_1]:
                 
                 self.ap_temp_t1(NUM_2,ctc1,calculosoma)
 
-            elif  ctc2 >= SELEC[1]:
+            elif  ctc2 >= SELEC[NUM_1]:
                 
-                self.ap_temp_t1(3,ctc2,calculosoma)
+                self.ap_temp_t1(NUM_3,ctc2,calculosoma)
 
-            elif  wtc >= SELEC[1]:
+            elif  wtc >= SELEC[NUM_1]:
                 
-                self.ap_temp_t1(4,wtc,calculosoma)
+                self.ap_temp_t1(NUM_4,wtc,calculosoma)
             
-            elif  calculosoma >= SELEC[1]:
+            elif  calculosoma >= SELEC[NUM_1]:
                 
-                self.ap_temp_t1(5,calculosoma,calculosoma)
+                self.ap_temp_t1(NUM_5,calculosoma,calculosoma)
             
 
             ##------------------------------------
             else:
-                self.apresentar_temp("TEMPERATURA",calculosoma)
+                self.apresentar_temp(TEMPERATURA_LT,calculosoma)
                 
                 self.var_if_temp()
 
         elif SELEC[2] == NUM_0:
 
-            self.apresentar_temp("TEMPERATURA",calculosoma)
+            self.apresentar_temp(TEMPERATURA_LT,calculosoma)
 
             self.var_if_temp()
 
@@ -107,22 +108,22 @@ class Temperatura100(QMainWindow):
             elif i1 == NUM_2:
                 self.apresentar_temp("CORE 1",ap1)
             
-            elif i1 == 3:
+            elif i1 == NUM_3:
                 self.apresentar_temp("CORE 2",ap1)
             
-            elif i1 == 4:
+            elif i1 == NUM_4:
                 self.apresentar_temp("WIFI",ap1)
 
-            elif i1 == 5:
-                self.apresentar_temp("TEMPERATURA",ap1)
+            elif i1 == NUM_5:
+                self.apresentar_temp(TEMPERATURA_LT,ap1)
             
 
         ##----------------------------------------
         elif self.var_2 != NUM_0:
 
-            self.apresentar_temp("TEMPERATURA",calc)
+            self.apresentar_temp(TEMPERATURA_LT,calc)
 
-            if self.var_2 == 3:
+            if self.var_2 == NUM_3:
                 
                 self.var_2 = NUM_0
 

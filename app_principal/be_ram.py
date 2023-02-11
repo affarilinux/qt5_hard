@@ -3,7 +3,7 @@ import psutil
 
 
 ##VARIAVEIS
-from variaveis_uni.numero import NUM_0,NUM_1,NUM_2,NUM_100
+from variaveis_uni.numero import NUM_0,NUM_1,NUM_2,NUM_3,NUM_100
 from variaveis_uni.PALAVRA import RAM_LT
 
 class BE_Ram(QMainWindow):
@@ -79,7 +79,7 @@ class BE_Ram(QMainWindow):
         else:
             self.BUTON_RAM.setText("{}\n {} %".format(RAM_LT,cfii))
 
-            if self.var_1 == 3:
+            if self.var_1 == NUM_3:
 
                 self.var_1 = NUM_0    
 
