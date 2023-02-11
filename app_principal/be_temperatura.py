@@ -6,6 +6,12 @@ from PyQt5.QtWidgets import QMainWindow
 from variaveis_uni.numero import NUM_0,NUM_1,NUM_2,NUM_5
 
 class Temperatura100(QMainWindow):
+
+    def __init__( self ):
+        
+        super ().__init__() # metodo
+
+        self.var_2 = NUM_0
     
     def temperatura_lib(self):
 
@@ -25,18 +31,108 @@ class Temperatura100(QMainWindow):
             wifi_temp    = psutil.sensors_temperatures()['iwlwifi_1'][NUM_0]
             wifi_temp_cur  = wifi_temp.current
 
-            calculosoma = (processador_temp_cur + core_temp_cur + core_temp1_cur + 
-                        core_temp2_cur + wifi_temp_cur ) / NUM_5
+            self.calculo_temperatura (processador_temp_cur, core_temp_cur,
+                core_temp1_cur,core_temp2_cur, wifi_temp_cur,NUM_5 )
 
             
         except KeyError:
 
-            wifi_temp_cur = NUM_0
+            self.calculo_temperatura (processador_temp_cur, core_temp_cur,
+                core_temp1_cur,core_temp2_cur, 0,4 )
 
-            calculosoma = (processador_temp_cur + core_temp_cur + core_temp1_cur + 
-                        core_temp2_cur + wifi_temp_cur ) / 4
+         ##---------------------------------------------------------------------
+       
+    def calculo_temperatura(self,ptc,ctc,ctc1,ctc2,wtc,div):
 
+        calculosoma = (ptc + ctc  + ctc1 + ctc2 + wtc ) / div
 
-        self.BUTON_TM.setText("TEMPERATURA\n{} ºC".format(calculosoma))
+        self.ativar_banco()
+
+        self.cursorsq.execute("SELECT TEMP_MIN,TEMP_MAX,TEMP_APRESENTAR FROM  TEMPERATURA WHERE ID_TEMP = ?",(NUM_1,))
+        SELEC = self.cursorsq.fetchone()
+
+        if SELEC[2] ==  NUM_1:
+            
+            if ptc >= SELEC[1]:
+                
+                self.ap_temp_t1(NUM_0,ptc,calculosoma)
+
+            elif  ctc >= SELEC[1]:
+                
+                self.ap_temp_t1(NUM_1,ctc,calculosoma)
+            
+            elif  ctc1 >= SELEC[1]:
+                
+                self.ap_temp_t1(NUM_2,ctc1,calculosoma)
+
+            elif  ctc2 >= SELEC[1]:
+                
+                self.ap_temp_t1(3,ctc2,calculosoma)
+
+            elif  wtc >= SELEC[1]:
+                
+                self.ap_temp_t1(4,wtc,calculosoma)
+            
+            elif  calculosoma >= SELEC[1]:
+                
+                self.ap_temp_t1(5,calculosoma,calculosoma)
+            
+
+            ##------------------------------------
+            else:
+                self.apresentar_temp("TEMPERATURA",calculosoma)
+                
+                self.var_if_temp()
+
+        elif SELEC[2] == NUM_0:
+
+            self.apresentar_temp("TEMPERATURA",calculosoma)
+
+            self.var_if_temp()
+
+        self.sair_banco()
+    ##------------------------------------------------------------------
+    def ap_temp_t1(self,i1,ap1,calc):
+
+        self.var_2 = self.var_2 + NUM_1
+
+        if self.var_2 == NUM_1:
+    
+            if i1 == NUM_0:
+                self.apresentar_temp("PLACA MAE",ap1)
+
+            elif i1 == NUM_1:
+                self.apresentar_temp("CORE",ap1)
+            
+            elif i1 == NUM_2:
+                self.apresentar_temp("CORE 1",ap1)
+            
+            elif i1 == 3:
+                self.apresentar_temp("CORE 2",ap1)
+            
+            elif i1 == 4:
+                self.apresentar_temp("WIFI",ap1)
+
+            elif i1 == 5:
+                self.apresentar_temp("TEMPERATURA",ap1)
+            
+
+        ##----------------------------------------
+        elif self.var_2 != NUM_0:
+
+            self.apresentar_temp("TEMPERATURA",calc)
+
+            if self.var_2 == 3:
+                
+                self.var_2 = NUM_0
+
+    def var_if_temp(self):
+
+        if self.var_2 != NUM_0:
+    
+            self.var_2 = NUM_0
+    ##__________________________________________________________________
+    def apresentar_temp(self,a1,a2):
+        self.BUTON_TM.setText("{}\n{} ºC".format(a1,a2))
 
         
