@@ -35,22 +35,22 @@ class BE_Ram(QMainWindow):
         self.cursorsq.execute("SELECT RAM_MINIMO,RAM_MAXIMO,RAM_APRESENTAR FROM  RAM  WHERE ID_RAM = ?",(NUM_1,))
         sel = self.cursorsq.fetchone()
 
-        if sel[2] == NUM_1:
+        if sel[NUM_2] == NUM_1:
             
-            if calculo_filtro_informacao < sel[0]:
+            if calculo_filtro_informacao < sel[NUM_0]:
 
                 self.ap_ram_processo('--',sel,NUM_0,calculo_filtro_informacao)
 
                
-            elif calculo_filtro_informacao >= sel[0] and calculo_filtro_informacao <= sel[1]:
+            elif calculo_filtro_informacao >= sel[NUM_0] and calculo_filtro_informacao <= sel[NUM_1]:
 
                 self.ap_ram_normal(calculo_filtro_informacao)
             
-            elif calculo_filtro_informacao > sel[1]:
+            elif calculo_filtro_informacao > sel[NUM_1]:
                 
                 self.ap_ram_processo('++',sel,NUM_1,calculo_filtro_informacao)
                 
-        elif sel[2] == NUM_0:
+        elif sel[NUM_2] == NUM_0:
     
             self.ap_ram_normal(calculo_filtro_informacao)
 

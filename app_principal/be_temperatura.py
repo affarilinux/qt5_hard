@@ -85,7 +85,7 @@ class Temperatura100(QMainWindow):
                 
                 self.var_if_temp()
 
-        elif SELEC[2] == NUM_0:
+        elif SELEC[NUM_2] == NUM_0:
 
             self.apresentar_temp(TEMPERATURA_LT,calculosoma)
 

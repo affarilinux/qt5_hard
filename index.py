@@ -34,6 +34,7 @@ class Principal(
     QMainWindow):
 
     def __init__(self):
+        
         super(Principal, self).__init__()
 
         self.setAttribute(Qt.Qt.WA_TranslucentBackground, truepal )   

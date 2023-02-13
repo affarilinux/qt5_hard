@@ -23,6 +23,14 @@ class CriarTabela:
             TEMP_APRESENTAR INT
             )""")
 
+        self.cursorsq.execute(
+            """CREATE TABLE if not exists PROCESSADOR(
+            ID_PROC INTEGER PRIMARY KEY AUTOINCREMENT,
+            PROC_MIN INT,
+            PROC_MAX INT,
+            PROC_APRESENTAR INT
+            )""")
+
 
 
         self.organizacao_tabelas_inicializacao()

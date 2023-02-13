@@ -1,10 +1,11 @@
 from PyQt5.QtWidgets import QMainWindow
 
-from variaveis_uni.numero import NUM_0,NUM_1
+from variaveis_uni.numero import NUM_0,NUM_1,NUM_2
 from variaveis_uni.ESTADO import none,truepal,falsepal
 
 class BeTemperatura(QMainWindow):
 
+    ### INICIO
     def leitura_tb_temperatura(self):
 
         self.ativar_banco()
@@ -12,10 +13,12 @@ class BeTemperatura(QMainWindow):
         self.cursorsq.execute("SELECT TEMP_MIN,TEMP_MAX,TEMP_APRESENTAR FROM  TEMPERATURA  WHERE ID_TEMP = ?",(NUM_1,))
         spin_T = self.cursorsq.fetchone()
         
-        self.SPINR3_MINIMO.setValue(spin_T[0])
-        self.spinr2_3.setValue(spin_T[1])
+        self.SPINR3_MINIMO.setValue(spin_T[NUM_0])
+        self.spinr2_3.setValue(spin_T[NUM_1])
+
         estad_T = none
-        if spin_T[2] == NUM_0:
+
+        if spin_T[NUM_2] == NUM_0:
             estad_T = falsepal
         else:
             estad_T = truepal
@@ -24,7 +27,9 @@ class BeTemperatura(QMainWindow):
         
         self.sair_banco()
     
-    def gravar_dbram(self):
+
+    ## BOTAO
+    def gravar_dbTEMP(self):
 
         self.ativar_banco()
 
@@ -41,13 +46,14 @@ class BeTemperatura(QMainWindow):
             self.cursorsq.execute("SELECT TEMP_MIN,TEMP_MAX FROM  TEMPERATURA  WHERE ID_TEMP = ?",(NUM_1,))
             spin_n = self.cursorsq.fetchone()
             
-            self.SPINR3_MINIMO.setValue(spin_n[0])
-            self.spinr2_3.setValue(spin_n[1])
+            self.SPINR3_MINIMO.setValue(spin_n[NUM_0])
+            self.spinr2_3.setValue(spin_n[NUM_1])
 
         self.commit_banco()
         self.sair_banco()
 
-    def check_box_estado(self):
+    ### ATIVAR OU DESATIVAR AVISO
+    def check_box_estado_TEMP(self):
 
         self.ativar_banco()
 

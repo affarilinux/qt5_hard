@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow
 
-from variaveis_uni.numero import NUM_0,NUM_1
+from variaveis_uni.numero import NUM_0,NUM_1,NUM_2
 from variaveis_uni.ESTADO import none,truepal,falsepal
 
 class BeRam(QMainWindow):
@@ -12,10 +12,10 @@ class BeRam(QMainWindow):
         self.cursorsq.execute("SELECT RAM_MINIMO,RAM_MAXIMO,RAM_APRESENTAR FROM  RAM  WHERE ID_RAM = ?",(NUM_1,))
         spin = self.cursorsq.fetchone()
         
-        self.SPINR2_MINIMO.setValue(spin[0])
-        self.spinr2_2.setValue(spin[1])
+        self.SPINR2_MINIMO.setValue(spin[NUM_0])
+        self.spinr2_2.setValue(spin[NUM_1])
         estad = none
-        if spin[2] == NUM_0:
+        if spin[NUM_2] == NUM_0:
             estad = falsepal
         else:
             estad = truepal
@@ -41,8 +41,8 @@ class BeRam(QMainWindow):
             self.cursorsq.execute("SELECT RAM_MINIMO,RAM_MAXIMO FROM  RAM  WHERE ID_RAM = ?",(NUM_1,))
             spin_n = self.cursorsq.fetchone()
             
-            self.SPINR2_MINIMO.setValue(spin_n[0])
-            self.spinr2_2.setValue(spin_n[1])
+            self.SPINR2_MINIMO.setValue(spin_n[NUM_0])
+            self.spinr2_2.setValue(spin_n[NUM_1])
 
         self.commit_banco()
         self.sair_banco()

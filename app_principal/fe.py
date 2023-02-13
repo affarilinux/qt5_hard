@@ -51,7 +51,7 @@ class GuiFrontPrincipal(QMainWindow):
         self.BUTON_PROCESSADOR.setGeometry(NUM_10, 330, NUM_120, NUM_120) 
         self.BUTON_PROCESSADOR.setStyleSheet(
             "border-radius : 60;  color: #FFFF00; font: bold; font-size: 14px;border : 5px solid #FFFF00")
-        #BUTON_BATERIA.clicked.connect(self.clickme) 
+        self.BUTON_PROCESSADOR.clicked.connect(self.J_P) 
 
         self.BUTON_COOLER = QPushButton( self) 
         self.BUTON_COOLER.setGeometry(NUM_110, 410, NUM_120, NUM_120) 
