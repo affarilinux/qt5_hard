@@ -3,7 +3,7 @@ from PyQt5.QtGui      import QIcon
 
 from variaveis_uni.universal import QICONE_BARRA_DE_TAREFA
 from variaveis_uni.PALAVRA import (RAM_LT,HARDWARE_LT,
-    TEMPERATURA_LT,PROCESSADOR_LT)
+    TEMPERATURA_LT,PROCESSADOR_LT,BATERIA_LT)
 from variaveis_uni.numero import NUM_200,NUM_300,NUM_500,NUM_600
 
 class SubJanela(QMainWindow):
@@ -13,8 +13,8 @@ class SubJanela(QMainWindow):
         self.j_bateria = Janela_bateria()
         self.J_TEMPERATURA =Janela_Temperatura()
         self.J_PROCESSADOR = Janela_Processador()
+        self.J_bateria = Janela_Bateria()
         
-
     def j_b(self):
         self.j_bateria.show()
 
@@ -24,6 +24,9 @@ class SubJanela(QMainWindow):
 
     def J_P(self):
         self.J_PROCESSADOR.show()
+
+    def J_B(self):
+        self.J_bateria.show()
 
 ##----------------------------------------------------------------------
 # /home/waghtom/Downloads/CTRL-C/envs/QT5_hard/qt5_hard/appsinit/init.py (python
@@ -90,6 +93,27 @@ class Janela_Processador(
         self.setGeometry(NUM_600, NUM_200, NUM_500, NUM_300) #j-XY app-XY
         self.setStyleSheet("background-color: #B0E0E6")#
         self.setWindowTitle("{}- {}".format(HARDWARE_LT,PROCESSADOR_LT))
+
+        self.setWindowIcon   ( QIcon ( QICONE_BARRA_DE_TAREFA ))   #icone da janela
+
+from APPS.app_bateria.backe_bateria import BeBateria
+from APPS.app_bateria.fe5 import GUIFe2Bateria
+
+
+from banco_dados.estruturabase import BancoDadosInit
+
+class Janela_Bateria(
+    BancoDadosInit
+    ,BeBateria,
+    GUIFe2Bateria,
+    QMainWindow):
+    
+    def __init__(self):
+        super(Janela_Bateria, self).__init__()        
+
+        self.setGeometry(NUM_600, NUM_200, NUM_500, NUM_300) #j-XY app-XY
+        self.setStyleSheet("background-color: #B0E0E6")#
+        self.setWindowTitle("{}- {}".format(HARDWARE_LT,BATERIA_LT))
 
         self.setWindowIcon   ( QIcon ( QICONE_BARRA_DE_TAREFA ))   #icone da janela
 

@@ -33,7 +33,7 @@ class GuiFrontPrincipal(QMainWindow):
         self.BUTON_BATERIA.setGeometry(NUM_110, 60,NUM_130,NUM_130) 
         self.BUTON_BATERIA.setStyleSheet(
             "border-radius : 65;  color: #FFFF00; font: bold; font-size: 22px;border : 5px solid #FFFF00")
-        self.BUTON_BATERIA.clicked.connect(self.clickme) 
+        self.BUTON_BATERIA.clicked.connect(self.J_B) 
 
         self.BUTON_RAM = QPushButton(self) 
         self.BUTON_RAM.setGeometry(NUM_10, NUM_150, NUM_120, NUM_120) 
@@ -60,21 +60,12 @@ class GuiFrontPrincipal(QMainWindow):
         #BUTON_BATERIA.clicked.connect(self.clickme) 
 
         LABEL_MAIN_FIXO = QLabel(self)
-        LABEL_MAIN_FIXO.setText("ctrl+Q sair")
+        LABEL_MAIN_FIXO.setText("ctrl+Q - sair\nctrl+O - bateria\n1.0 pyqt5")
         LABEL_MAIN_FIXO.move(NUM_5,520)
-        LABEL_MAIN_FIXO.resize(60,20)
+        LABEL_MAIN_FIXO.resize(80,40)
         LABEL_MAIN_FIXO.setStyleSheet('QLabel{color: #FFFF00; font: bold; font-size: 11px}')# YELLOW_
 
-        LABEL_VERSION = QLabel(self)
-        LABEL_VERSION.setText("V: 1.0 pyqt5")
-        LABEL_VERSION.move(70,520)
-        LABEL_VERSION.resize(60,20)
-        LABEL_VERSION.setStyleSheet('QLabel{color: #FFFF00; font: bold; font-size: 11px}')# YELLOW_
-
         self.be_app_principal()
-    def clickme(self): 
-  
-        print("pressed") 
 
     def be_app_principal(self):
         self.chamada_qtimerbateria()        

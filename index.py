@@ -16,7 +16,7 @@ from app_principal.be_temperatura import Temperatura100
 from app_principal.be_cooler      import CoolerAtivo
 from app_principal.be_aviso import AvisoSon
 
-from fechar_janela.key import KeyBoard
+from janela_key.key import KeyBoard
 
 from appsinit.init import SubJanela
 
@@ -41,7 +41,7 @@ class Principal(
         self.setAttribute(Qt.Qt.WA_NoSystemBackground, falsepal)      
         self.setWindowFlags(Qt.Qt.FramelessWindowHint)
 
-        self.setGeometry(1610, NUM_100, 250, 540) #j-XY app-XY
+        self.setGeometry(1610, NUM_100, 250, 565) #j-XY app-XY
         self.setStyleSheet("Principal{background-color: rgba(0,255,255, 20);}") #Aqua / 
         
         self.setWindowIcon   ( QIcon ( QICONE_BARRA_DE_TAREFA ))   #icone da janela

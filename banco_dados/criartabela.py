@@ -31,7 +31,13 @@ class CriarTabela:
             PROC_APRESENTAR INT
             )""")
 
-
+        self.cursorsq.execute(
+            """CREATE TABLE if not exists BATERIA(
+            ID_BAT INTEGER PRIMARY KEY AUTOINCREMENT,
+            BAT_MIN INT,
+            BAT_MAX INT,
+            BAT_APRESENTAR INT
+            )""")
 
         self.organizacao_tabelas_inicializacao()
 

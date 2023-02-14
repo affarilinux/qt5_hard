@@ -40,7 +40,6 @@ class BE_Ram(QMainWindow):
             if calculo_filtro_informacao < sel[NUM_0]:
 
                 self.ap_ram_processo('--',sel,NUM_0,calculo_filtro_informacao)
-
                
             elif calculo_filtro_informacao >= sel[NUM_0] and calculo_filtro_informacao <= sel[NUM_1]:
 
@@ -49,7 +48,7 @@ class BE_Ram(QMainWindow):
             elif calculo_filtro_informacao > sel[NUM_1]:
                 
                 self.ap_ram_processo('++',sel,NUM_1,calculo_filtro_informacao)
-                
+                                
         elif sel[NUM_2] == NUM_0:
     
             self.ap_ram_normal(calculo_filtro_informacao)
@@ -82,3 +81,4 @@ class BE_Ram(QMainWindow):
 
                 self.var_1 = NUM_0    
 
+    
