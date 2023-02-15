@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import QMainWindow,QShortcut
+from PyQt5.QtWidgets import QMainWindow, QShortcut
+#from PyQt5.QtGui import  QShortcut
 from PyQt5.QtGui import QKeySequence
 
 from variaveis_uni.numero import NUM_0,NUM_1

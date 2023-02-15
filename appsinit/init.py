@@ -128,9 +128,6 @@ class Janela_grafico(
     def __init__(self):
         super(Janela_grafico, self).__init__()        
 
-        self.setWindowTitle("{}- {}".format(HARDWARE_LT,"GRAFICO"))
-        self.setWindowIcon   ( QIcon ( QICONE_BARRA_DE_TAREFA ))   #icone da janela
-
         self.canvas()
 
         

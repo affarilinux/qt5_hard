@@ -1,8 +1,9 @@
 import os
 
 from PyQt5.QtWidgets import QMainWindow
-from PyQt5.QtCore import QUrl
-from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+from pydub import AudioSegment
+from pydub.playback import play
+
 
 
 from variaveis_uni.numero import NUM_0,NUM_1
@@ -19,18 +20,11 @@ class AvisoSon(QMainWindow):
 
         if self.var_aviso_son == NUM_1:
 
-            self.player = QMediaPlayer()
-
-            full_file_path = os.path.join(os.getcwd(), 'variaveis_uni/jk.mp3')
-            url = QUrl.fromLocalFile(full_file_path)
-            content = QMediaContent(url)
-
-            self.player.setMedia(content)
-            self.player.play()
+            sound = AudioSegment.from_wav('variaveis_uni/jk.wav')
+            play(sound)
 
             self.var_aviso_son = NUM_0
-
-
+        
     def funcao_if_son(self):
 
          ## sinal de aviso tocar
