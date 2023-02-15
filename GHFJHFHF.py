@@ -40,73 +40,64 @@ sys.exit(app.exec_())
 
 #qsound.stop() # 停止'''
 
-import sys, os
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, \
-                            QHBoxLayout, QVBoxLayout
-from PyQt5.QtCore import QUrl
-from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+'''from PyQt5 import QtWidgets
+from pyqtgraph import PlotWidget, plot
+import pyqtgraph as pg
+import sys  # We need sys so that we can pass argv to QApplication
+import os
+
+class MainWindow(QtWidgets.QMainWindow):
+
+    def __init__(self, *args, **kwargs):
+        super(MainWindow, self).__init__(*args, **kwargs)
+
+        self.graphWidget = pg.PlotWidget()
+        self.setCentralWidget(self.graphWidget)
+
+        hour = [1,2,3,4,5,6,7,8,9,10]
+        temperature = [30,32,34,32,33,31,29,32,35,45]
+
+        # plot data: x, y values
+        self.graphWidget.plot(hour, temperature)
 
 
-class MyApp(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.window_width, self.window_height = 800, 120
-        self.setMinimumSize(self.window_width, self.window_height)
+def main():
+    app = QtWidgets.QApplication(sys.argv)
+    main = MainWindow()
+    main.show()
+    sys.exit(app.exec_())
 
-        self.layout = QVBoxLayout()
-        self.setLayout(self.layout)
-
-        btn = QPushButton('Play', clicked=self.playAudioFile)
-        self.layout.addWidget(btn)
-
-        volumeControl = QHBoxLayout()
-        self.layout.addLayout(volumeControl)
-
-        btnVolumeUp = QPushButton('+', clicked=self.volumeUp)
-        btnVolumeDown = QPushButton('-', clicked=self.volumeDown)
-        butVolumeMute = QPushButton('Mute', clicked=self.volumeMute)
-        volumeControl.addWidget(btnVolumeUp)
-        volumeControl.addWidget(butVolumeMute)
-        volumeControl.addWidget(btnVolumeDown)
-
-        self.player = QMediaPlayer()
-
-    def volumeUp(self):
-        currentVolume = self.player.volume() # 
-        print(currentVolume)
-        self.player.setVolume(currentVolume + 5)
-
-    def volumeDown(self):
-        currentVolume = self.player.volume() # 
-        print(currentVolume)
-        self.player.setVolume(currentVolume - 5)
-
-    def volumeMute(self):
-        self.player.setMuted(not self.player.isMuted())
-
-    def playAudioFile(self):
-        full_file_path = os.path.join(os.getcwd(), 'jk.mp3')
-        url = QUrl.fromLocalFile(full_file_path)
-        content = QMediaContent(url)
-
-        self.player.setMedia(content)
-        self.player.play()
 
 if __name__ == '__main__':
-    # don't auto scale when drag app to a different monitor.
-    # QApplication.setAttribute(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
-    
-    app = QApplication(sys.argv)
-    app.setStyleSheet('''
-        QWidget {
-            font-size: 30px;
-        }
-    ''')
-    
-    myApp = MyApp()
-    myApp.show()
+    main()'''
 
-    try:
-        sys.exit(app.exec_())
-    except SystemExit:
-        print('Closing Window...')
+from PyQt5 import QtWidgets  # Should work with PyQt5 / PySide2 / PySide6 as well
+import pyqtgraph as pg
+
+## Always start by initializing Qt (only once per application)
+app = QtWidgets.QApplication([])
+
+## Define a top-level widget to hold everything
+w = QtWidgets.QWidget()
+w.setWindowTitle('PyQtGraph example')
+
+## Create some widgets to be placed inside
+btn = QtWidgets.QPushButton('press me')
+text = QtWidgets.QLineEdit('enter text')
+listw = QtWidgets.QListWidget()
+plot = pg.PlotWidget()
+
+## Create a grid layout to manage the widgets size and position
+layout = QtWidgets.QGridLayout()
+w.setLayout(layout)
+
+## Add widgets to the layout in their proper positions
+layout.addWidget(btn, 0, 0)  # button goes in upper-left
+layout.addWidget(text, 1, 0)  # text edit goes in middle-left
+layout.addWidget(listw, 2, 0)  # list widget goes in bottom-left
+layout.addWidget(plot, 0, 1, 3, 1)  # plot goes on right side, spanning 3 rows
+## Display the widget as a new window
+w.show()
+
+## Start the Qt event loop
+app.exec()  # or app.exec_() for PyQt5 / PySide2

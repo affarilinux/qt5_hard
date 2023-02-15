@@ -86,8 +86,10 @@ class Bateria100(QMainWindow):
                     ## sinal de menor
                     if se == NUM_1:
                         self.apt_funcao_alter("--",tbb)
+                        
 
                         if estt == "des":
+                            print(estt)
     
                             self.funcao_if_son()
 

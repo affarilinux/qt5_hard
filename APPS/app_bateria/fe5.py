@@ -5,7 +5,8 @@ from PyQt5.QtWidgets import (QMainWindow, QLabel,
 from variaveis_uni.numero import (NUM_1,NUM_20,NUM_30,NUM_50,
 NUM_100,NUM_150,NUM_220)
 
-class GUIFe2Bateria(QMainWindow):
+from appsinit.init import SubJanela
+class GUIFe2Bateria(SubJanela,QMainWindow):
     def __init__( self ):
     
         super ().__init__() # metodo 
@@ -45,7 +46,7 @@ class GUIFe2Bateria(QMainWindow):
 
         self.QCB_C_5 = QCheckBox(" APRESENTAR AVISO",self)
         self.QCB_C_5.move(NUM_100,190)
-        self.QCB_C_5.resize(250,NUM_30)
+        self.QCB_C_5.resize(260,NUM_30)
         self.QCB_C_5.setStyleSheet('QCheckBox{font: bold; font-size: 20px;border : 2px solid #EE82EE}')# Violet
         self.QCB_C_5.clicked.connect(self.check_box_estado_BATE)
 
@@ -54,6 +55,16 @@ class GUIFe2Bateria(QMainWindow):
         LABEL_INFO_NUM_T.move(NUM_100,240)
         LABEL_INFO_NUM_T.setText("  * VALIDO ENTRE 1 A 100%.")
         LABEL_INFO_NUM_T.resize(420,NUM_20)
-        LABEL_INFO_NUM_T.setStyleSheet('QLabel{font: italic;font-size: 14px}')# 
+        LABEL_INFO_NUM_T.setStyleSheet('QLabel{font: italic;font-size: 14px}')#
+
+        self.botao_c3= QPushButton("GRAFICO",self)
+        self.botao_c3.move(300,NUM_150)#janela
+        self.botao_c3.resize(NUM_100,25)
+        self.botao_c3.setStyleSheet('QPushButton{background-color: #EE82EE; font: bold; font-size: 18px}')
+        self.botao_c3.clicked.connect(self.inicial_grafo)
 
         self.leitura_tb_BATE()
+
+    
+        
+       
