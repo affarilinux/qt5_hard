@@ -20,7 +20,7 @@ class AvisoSon(QMainWindow):
 
         if self.var_aviso_son == NUM_1:
 
-            sound = AudioSegment.from_wav('variaveis_uni/jk.wav')
+            sound = AudioSegment.from_file(file = 'variaveis_uni/jk.wav', format = "wav")
             play(sound)
 
             self.var_aviso_son = NUM_0

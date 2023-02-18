@@ -39,6 +39,7 @@ class CriarTabela:
             BAT_APRESENTAR INT
             )""")
 
+            
         self.organizacao_tabelas_inicializacao()
 
         self.commit_banco()

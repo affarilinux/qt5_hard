@@ -1,6 +1,8 @@
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5 import QtCore
 from PyQt5.QtGui      import QIcon
+from PyQt5 import QtWidgets, QtCore
+
 from variaveis_uni.universal import QICONE_BARRA_DE_TAREFA
 
 import pyqtgraph as pg
@@ -8,26 +10,61 @@ import pyqtgraph as pg
 class Guicanvasfe(QMainWindow):
 
     def canvas(self):
+
+       
+
+        self.xt = range(0, 10)
+        self.plt = pg.plot()
         
-        y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] 
-        y2 = [3, 1, 5, 8, 9, 11, 16, 17, 14, 16] 
-        y3 = [6, 1, 5, 10, 9, 3, 16, 6, 14, 27] 
-        x = range(0, 10) 
-        plt = pg.plot() 
-        plt.showGrid(x=True, y=True) 
-        plt.addLegend() 
-        plt.setLabel('left', 'NÍVEL CARGA', units='%') 
-        plt.setLabel('bottom', 'TEMPO', units='T') 
-        plt.setXRange(0, 100) 
-        plt.setYRange(0, 100) 
-        plt.setWindowTitle( 'BATERIA' )
-        plt.move(400,550)
-        plt.resize(1000,350)
-        plt.setWindowIcon   ( QIcon ( QICONE_BARRA_DE_TAREFA ))   #icone da janela
-        line1 = plt.plot(x, y, pen='g', symbol='x', 
-                         symbolPen='g', symbolBrush=0.2, symbolSize = 14,name='Carregando') 
-        line2 = plt.plot(x, y2, pen='b', symbol='o', 
-                         symbolPen='b', symbolBrush=0.2, symbolSize = 14,name='descarregando') 
-        line3 = plt.plot(x, y3, pen='w', symbol='+', 
-                         symbolPen='w', symbolBrush=0.2, symbolSize = 14,name='MEDIA VIDA') 
-        plt.show()
+        self.plt.showGrid(x=True, y=True) 
+        self.plt.addLegend() 
+        self.plt.setLabel('left', 'NÍVEL CARGA', units='%') 
+        self.plt.setLabel('bottom', 'TEMPO', units='T') 
+        self.plt.setXRange(0, 100) 
+        self.plt.setYRange(-10, 100) 
+        self.plt.setWindowTitle( 'BATERIA' )
+        self.plt.move(400,550)
+        self.plt.resize(1000,400)
+        self.plt.setWindowIcon   ( QIcon ( QICONE_BARRA_DE_TAREFA ))   #icone da janela
+
+        self.canvasbe(self.plt)
+
+        #funcao
+        self.add_label()
+        self.add_line()
+        self.set_proxy()
+        
+        self.plt.show()
+        
+    def add_label (self):
+
+        self.labele = pg.TextItem(text="X: {} \nY: {}".format(0, 0))
+        self.plt.addItem(self.labele)
+    
+    def add_line(self):
+
+        self.vertical_line = pg.InfiniteLine(angle=90, movable=False, pen=pg.mkPen('#fff', width=1))
+        self.horizontal_line = pg.InfiniteLine(angle=0, movable=False, pen=pg.mkPen('#fff', width=1))
+
+        self.plt.addItem(self.vertical_line, ignoreBounds=True)
+        self.plt.addItem(self.horizontal_line, ignoreBounds=True)
+
+    def set_proxy(self):
+    
+        self.setMouseTracking(True)
+        self.plt.scene().sigMouseMoved.connect(self.onMouseMoved)
+
+    def onMouseMoved(self, evt):
+        
+        if self.plt.plotItem.vb.mapSceneToView(evt):
+            point = self.plt.plotItem.vb.mapSceneToView(evt)
+            xx = float("{0:.3f}".format(point.x()))
+            yy = float("{0:.3f}".format(point.y()))
+            self.labele.setHtml(
+                """<p style='color: #FFFF00;font-size: 11pt; font-family: Arial;font-weight: bold'>
+                X： {0} <br> Y: {1}</p>""".format(xx,yy))
+
+            self.vertical_line.setPos(point.x())
+            self.horizontal_line.setPos(point.y())
+
+            

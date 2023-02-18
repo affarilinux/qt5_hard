@@ -38,19 +38,19 @@ class GuiFrontPrincipal(QMainWindow):
         self.BUTON_RAM = QPushButton(self) 
         self.BUTON_RAM.setGeometry(NUM_10, NUM_150, NUM_120, NUM_120) 
         self.BUTON_RAM.setStyleSheet(
-            "border-radius : 60;  color: #FFFF00; font: bold; font-size: 25px;border : 3px solid #FFFF00")
+            "border-radius : 60;  color: #FFFF00; font: bold; font-size: 22px;border : 3px solid #FFFF00")
         self.BUTON_RAM.clicked.connect(self.j_b) 
 
         self.BUTON_TM = QPushButton( self) 
         self.BUTON_TM.setGeometry(NUM_100, 230,NUM_140, NUM_140) 
         self.BUTON_TM.setStyleSheet(
-            "border-radius : 70;  color: #FFFF00; font: bold; font-size: 16px;border : 4px solid #FFFF00")
+            "border-radius : 70;  color: #FFFF00; font: bold; font-size: 15px;border : 4px solid #FFFF00")
         self.BUTON_TM.clicked.connect(self.j_t) 
 
         self.BUTON_PROCESSADOR = QPushButton( self) 
         self.BUTON_PROCESSADOR.setGeometry(NUM_10, 330, NUM_120, NUM_120) 
         self.BUTON_PROCESSADOR.setStyleSheet(
-            "border-radius : 60;  color: #FFFF00; font: bold; font-size: 14px;border : 5px solid #FFFF00")
+            "border-radius : 60;  color: #FFFF00; font: bold; font-size: 12px;border : 5px solid #FFFF00")
         self.BUTON_PROCESSADOR.clicked.connect(self.J_P) 
 
         self.BUTON_COOLER = QPushButton( self) 

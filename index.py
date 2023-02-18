@@ -9,7 +9,7 @@ from variaveis_uni.ESTADO import truepal,falsepal
 from variaveis_uni.universal import QICONE_BARRA_DE_TAREFA
 ##SISTEMA
 from app_principal.fe import GuiFrontPrincipal
-from app_principal.be_bateria import Bateria100
+from app_principal.bateriabe.be_bateria import Bateria100
 from app_principal.be_ram import BE_Ram
 from app_principal.be_processador import Processador100
 from app_principal.be_temperatura import Temperatura100
