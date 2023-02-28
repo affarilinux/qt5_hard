@@ -6,6 +6,8 @@ class Verificacao:
    
     def organizacao_tabelas_inicializacao(self):
 
+        self.ativar_banco()
+        
         self.cursorsq.execute(
             "SELECT * from RAM WHERE ID_RAM = ?",(NUM_1,))
         ex = self.cursorsq.fetchone()
@@ -41,3 +43,7 @@ class Verificacao:
             
             self.cursorsq.execute(
                 "INSERT INTO BATERIA( BAT_MIN,BAT_MAX,BAT_APRESENTAR) VALUES (?,?,?)",(NUM_1,NUM_100,NUM_0))
+            
+
+        self.commit_banco()
+        self.sair_banco()

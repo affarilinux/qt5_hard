@@ -74,6 +74,9 @@ class Bateria100(QMainWindow):
         self.commit_banco()
         self.sair_banco()
 
+        self.bat_tb_bd(entrada_informacao,est)
+        self.exec_procesos_carreagndo(entrada_informacao,est)
+        
     ###----------------------------------------------------------------
     def if_bt_ (self,se,tbb,estt,enin):
 

@@ -21,7 +21,7 @@ class Guicanvasfe(QMainWindow):
         self.plt.setLabel('left', 'NÍVEL CARGA', units='%') 
         self.plt.setLabel('bottom', 'TEMPO', units='T') 
         self.plt.setXRange(0, 100) 
-        self.plt.setYRange(-10, 100) 
+        self.plt.setYRange(0, 100) 
         self.plt.setWindowTitle( 'BATERIA' )
         self.plt.move(400,550)
         self.plt.resize(1000,400)
@@ -38,7 +38,7 @@ class Guicanvasfe(QMainWindow):
         
     def add_label (self):
 
-        self.labele = pg.TextItem(text="X: {} \nY: {}".format(0, 0))
+        self.labele = pg.TextItem(text="X: {} \nY: {}".format(0, 0),anchor=(-7,5))
         self.plt.addItem(self.labele)
     
     def add_line(self):

@@ -23,6 +23,8 @@ from appsinit.init import SubJanela
 from banco_dados.estruturabase import BancoDadosInit
 from banco_dados.criartabela import CriarTabela
 from banco_dados.verificacao import Verificacao
+from app_principal.bateriabe.verificacao_bdbat import BateriaBD
+from app_principal.bateriabe.BATERIA_PROCESSO import EXEC_bateria
 
 class Principal(
     GuiFrontPrincipal,Bateria100,BE_Ram,
@@ -30,7 +32,8 @@ class Principal(
     AvisoSon,
     KeyBoard,
     SubJanela,
-    BancoDadosInit,CriarTabela,Verificacao,
+    BancoDadosInit,CriarTabela,Verificacao,BateriaBD,
+    EXEC_bateria,
     QMainWindow):
 
     def __init__(self):
