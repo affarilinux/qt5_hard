@@ -76,6 +76,7 @@ class Bateria100(QMainWindow):
 
         self.bat_tb_bd(entrada_informacao,est)
         self.exec_procesos_carreagndo(entrada_informacao,est)
+        self.salvar_tb_temporaria(entrada_informacao)
         
     ###----------------------------------------------------------------
     def if_bt_ (self,se,tbb,estt,enin):

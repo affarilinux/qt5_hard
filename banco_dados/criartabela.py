@@ -88,6 +88,14 @@ class CriarTabela:
             FOREIGN KEY(CA_DES) REFERENCES ESTADO_BATERIA(ID_ESTADO)
             )""")
         
+        ## tabela media intermediaria
+        self.cursorsq.execute(
+            """CREATE TABLE if not exists MEDIA(
+            ID_MEDIA INTEGER PRIMARY KEY AUTOINCREMENT,
+            MEDIA_INT INT,
+            MEDIA_SECOND INT
+            )""")
+        
         self.commit_banco()
         self.sair_banco()
 

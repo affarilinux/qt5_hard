@@ -10,6 +10,7 @@ class EXEC_bateria(QMainWindow):
 
         self.abc = none
         self.asb = none
+        
         self.ativar_banco()
 
         self.cursorsq.execute("SELECT ID_GRAFO FROM BATERIA_PC   WHERE ID_GRAFO = ?",(NUM_1,))
@@ -87,6 +88,7 @@ class EXEC_bateria(QMainWindow):
                             
                             self.exec_inter_up()
                             self.commit_banco()
+
                             self.exec_upp(pc,et,m_batpc[0])
                             self.commit_banco()
 
@@ -99,7 +101,7 @@ class EXEC_bateria(QMainWindow):
                     self.cursorsq.execute("SELECT max(idc_num) FROM BATERIA_PC")
                     maxx = self.cursorsq.fetchone()
 
-                    self.asb = maxx[0]
+                    self.asb = maxx[0] + 1
                     self.exec_inter_b2(pc,et)
                     self.commit_banco()
 
@@ -114,9 +116,9 @@ class EXEC_bateria(QMainWindow):
         self.cursorsq.execute("SELECT ID_DATA FROM DATA_   WHERE DATA__ = ?",(self.hj,))
         DTT = self.cursorsq.fetchone()
 
+        ### FUNCAO INTERNA
         def ess(self,hrr,dtt):
 
-            
             self.cursorsq.execute(
                 """SELECT  ID_TEMPO FROM TEMPO   
                 WHERE TEMPO_HORA == ? and TEMPO_DATA == ? """,(hrr,dtt))
@@ -158,7 +160,6 @@ class EXEC_bateria(QMainWindow):
     ##--------------------------------------------
     def exec_inter_b2(self,pcc,ett):
 
-        #seconds = int(time.time())
         self.cursorsq.execute(
                     """SELECT  ID_BATER FROM BATER   
                     WHERE BATER = ? """,(pcc,))
@@ -175,8 +176,7 @@ class EXEC_bateria(QMainWindow):
         
     def exec_upp(self,pcc,ett,m_):
     
-        #seconds = int(time.time())
-
+        
         self.cursorsq.execute(
                     """SELECT  ID_BATER FROM BATER   
                     WHERE BATER = ? """,(pcc,))
