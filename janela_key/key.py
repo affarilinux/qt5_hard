@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QMainWindow, QShortcut
 from PyQt5.QtGui import QKeySequence
 
 from variaveis_uni.numero import NUM_0,NUM_1
+from variaveis_uni.ESTADO import none
 
 class KeyBoard(QMainWindow):
     
@@ -15,8 +16,11 @@ class KeyBoard(QMainWindow):
 
         self.shortcut_closer = QShortcut(QKeySequence('Ctrl+O'), self)
         self.shortcut_closer.activated.connect(self.key_var_if)
+
+        self.var__intervalo = 0
   
     def closeApp(self):
+
         self.close()
 
     def key_var_if(self):

@@ -1,4 +1,4 @@
-import time
+
 from PyQt5.QtWidgets import QMainWindow
 
 from variaveis_uni.numero import NUM_0,NUM_1

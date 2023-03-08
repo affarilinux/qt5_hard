@@ -96,6 +96,8 @@ class CriarTabela:
             MEDIA_SECOND INT
             )""")
         
+        
+        
         self.commit_banco()
         self.sair_banco()
 

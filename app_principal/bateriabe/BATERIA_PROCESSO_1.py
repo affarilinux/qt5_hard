@@ -33,7 +33,6 @@ class EXEC_bateria_1(QMainWindow):
                     return A
                 else:
 
-                    
                     A.append(demm[0])
                     A.append(demm[1])
                     return A
@@ -47,16 +46,23 @@ class EXEC_bateria_1(QMainWindow):
 
                 self.commit_banco()
 
-
             seconds = int(time.time())
 
-            sal = salvar_tbt(self,1,bt,seconds)
+            salvar_tbt(self,1,bt,seconds)
             sall = salvar_tbt(self,2,bt,seconds)
 
-            
             if bt > sall[0] or bt < sall[0]:
+
+                if self.var__intervalo == 0:
+
+                    salvar_tbt_2(self, bt,seconds,1)
+                    salvar_tbt_2(self,bt,seconds,2)
+
+                    self.var__intervalo = 1
+
+                elif self.var__intervalo == 1:
                 
-                salvar_tbt_2(self, sall[0],sall[1],1)
-                salvar_tbt_2(self,bt,seconds,2)
+                    salvar_tbt_2(self, sall[0],sall[1],1)
+                    salvar_tbt_2(self,bt,seconds,2)
 
         self.sair_banco()
