@@ -47,28 +47,49 @@ class Bateria100(QMainWindow):
 
         self.ativar_banco()
 
-        self.cursorsq.execute("SELECT BAT_MIN, BAT_MAX,BAT_APRESENTAR FROM  BATERIA  WHERE ID_BAT = ?",(NUM_1,))
+        self.cursorsq.execute(
+             "SELECT BAT_MIN, BAT_MAX,BAT_APRESENTAR FROM  BATERIA  WHERE ID_BAT = ?",(NUM_1,))
         batere = self.cursorsq.fetchone()
+
+        ###---------------------------------------
+        self.cursorsq.execute(
+             "SELECT max(ID_MEDIA_TEMPO) FROM  MEDIA_TEMPO")
+        ere = self.cursorsq.fetchone()
+
+        self.cursorsq.execute(
+             "SELECT tempo_carga FROM  MEDIA_TEMPO  WHERE ID_MEDIA_TEMPO = ?",(ere[0],))
+        ere1 = self.cursorsq.fetchone()
+
+        if ere == none:
+             
+            erre = "00:00"
+
+        elif ere != none:
+             
+            err = ere1[0]
+            erre = err[0:5]
+
+        ###---------------------------------------
         
         if batere[NUM_2] == NUM_1:
 
             if nivel_bateria <= batere[NUM_0]:
 
-                self.if_bt_(NUM_1,batere[NUM_0],est,entrada_informacao)
+                self.if_bt_(NUM_1,batere[NUM_0],est,entrada_informacao,erre)
 
             elif nivel_bateria > batere[NUM_0] and nivel_bateria <= batere[NUM_1]:
 
-                self.apt_funcao(est,entrada_informacao)
+                self.apt_funcao(est,entrada_informacao,erre)
                 self.funcao_var_bat()
             
             elif nivel_bateria > batere[NUM_1]:
 
-                  self.if_bt_(NUM_0,batere[NUM_1],est,entrada_informacao)
+                  self.if_bt_(NUM_0,batere[NUM_1],est,entrada_informacao,erre)
 
         ##--------------------------------------------------------------
         elif batere[NUM_2] == NUM_0:
 
-            self.apt_funcao(est,entrada_informacao)
+            self.apt_funcao(est,entrada_informacao,erre)
             self.funcao_var_bat()
 
         self.commit_banco()
@@ -81,7 +102,7 @@ class Bateria100(QMainWindow):
 
         
     ###----------------------------------------------------------------
-    def if_bt_ (self,se,tbb,estt,enin):
+    def if_bt_ (self,se,tbb,estt,enin,erre1):
 
         if self.var_estado_bat == NUM_0:
 
@@ -93,9 +114,7 @@ class Bateria100(QMainWindow):
                     if se == NUM_1:
                         self.apt_funcao_alter("--",tbb)
                         
-
                         if estt == "des":
-                            print(estt)
     
                             self.funcao_if_son()
 
@@ -109,14 +128,14 @@ class Bateria100(QMainWindow):
 
             elif self.var_bty != NUM_0:
 
-                self.apt_funcao(estt,enin)
+                self.apt_funcao(estt,enin,erre1)
 
                 if self.var_bty == NUM_3:
                     self.var_bty = NUM_0
 
         elif self.var_estado_bat == NUM_1:
 
-            self.apt_funcao(estt,enin)
+            self.apt_funcao(estt,enin,erre1)
             self.funcao_var_bat()
 
             if self.var_qtcore == NUM_0:
@@ -134,10 +153,10 @@ class Bateria100(QMainWindow):
         #---------------------------------------------------------------
         # chama a janela'
     ###-----------------------------------------------------------------
-    def apt_funcao(self,etd,ei):
+    def apt_funcao(self,etd,ei,erre_a1):
 
         self.BUTON_BATERIA.setText(
-            "{}\n{} 00:00\n{} %".format(BATERIA_LT,etd,ei))
+            "{}\n{} {}\n{} %".format(BATERIA_LT,etd,erre_a1,ei))
     
     def apt_funcao_alter(self, prc,tb):
 

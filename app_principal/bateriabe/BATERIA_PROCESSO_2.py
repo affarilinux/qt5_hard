@@ -81,7 +81,7 @@ class EXEC_bateria_2(QMainWindow):
 
             elif ttdes == "des":
                 tarefa3 = vgaya[0] * tarefa2
-
+                
             uy1 = convert_to_preferred_format(tarefa3)
 
             ya_1(self,maxya[0], uy1)
