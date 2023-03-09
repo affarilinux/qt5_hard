@@ -96,7 +96,14 @@ class CriarTabela:
             MEDIA_SECOND INT
             )""")
         
-        
+        ## tabela media intermediaria
+        self.cursorsq.execute(
+            """CREATE TABLE if not exists MEDIA_TEMPO(
+            ID_MEDIA_TEMPO INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_ex INT,
+            tempo_carga text,
+            FOREIGN KEY(id_ex) REFERENCES BATERIA_PC(ID_GRAFO)
+            )""")
         
         self.commit_banco()
         self.sair_banco()

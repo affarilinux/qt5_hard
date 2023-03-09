@@ -26,6 +26,7 @@ from banco_dados.verificacao import Verificacao
 from app_principal.bateriabe.verificacao_bdbat import BateriaBD
 from app_principal.bateriabe.BATERIA_PROCESSO import EXEC_bateria
 from app_principal.bateriabe.BATERIA_PROCESSO_1 import EXEC_bateria_1
+from app_principal.bateriabe.BATERIA_PROCESSO_2 import EXEC_bateria_2
 
 class Principal(
     GuiFrontPrincipal,Bateria100,BE_Ram,
@@ -34,7 +35,7 @@ class Principal(
     KeyBoard,
     SubJanela,
     BancoDadosInit,CriarTabela,Verificacao,BateriaBD,
-    EXEC_bateria,EXEC_bateria_1,
+    EXEC_bateria,EXEC_bateria_1,EXEC_bateria_2,
     QMainWindow):
 
     def __init__(self):
