@@ -11,8 +11,6 @@ class Guicanvasfe(QMainWindow):
 
     def canvas(self):
 
-       
-
         self.xt = range(0, 10)
         self.plt = pg.plot()
         
@@ -38,7 +36,7 @@ class Guicanvasfe(QMainWindow):
         
     def add_label (self):
 
-        self.labele = pg.TextItem(text="X: {} \nY: {}".format(0, 0),anchor=(-7,5))
+        self.labele = pg.TextItem(text="X: {} \nY: {}".format(0, 0),anchor=(-1,5))
         self.plt.addItem(self.labele)
     
     def add_line(self):

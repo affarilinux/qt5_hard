@@ -60,12 +60,16 @@ class Bateria100(QMainWindow):
              "SELECT tempo_carga FROM  MEDIA_TEMPO  WHERE ID_MEDIA_TEMPO = ?",(ere[0],))
         ere1 = self.cursorsq.fetchone()
 
-        if ere == none:
+        self.cursorsq.execute(
+             "SELECT tempo_carga FROM  MEDIA_TEMPO  WHERE ID_MEDIA_TEMPO = ?",(1,))
+        ere2 = self.cursorsq.fetchone()
+
+        if ere2 == none:
              
             erre = "00:00"
 
-        elif ere != none:
-             
+        elif ere2 != none:
+            
             err = ere1[0]
             erre = err[0:5]
 

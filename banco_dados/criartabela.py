@@ -102,6 +102,7 @@ class CriarTabela:
             ID_MEDIA_TEMPO INTEGER PRIMARY KEY AUTOINCREMENT,
             id_ex INT,
             tempo_carga text,
+            TEMPO_MEDIO INT,
             FOREIGN KEY(id_ex) REFERENCES BATERIA_PC(ID_GRAFO)
             )""")
         
