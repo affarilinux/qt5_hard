@@ -109,10 +109,16 @@ class EXEC_bateria_2(QMainWindow):
 
             tarefa2 = int(tarefa1 / tarefa)
 
-            if ttdes == "ca":
+            self.cursorsq.execute("SELECT CA_DES FROM BATERIA_PC  WHERE ID_GRAFO = ?",(maxya[0],))
+            ca_des = self.cursorsq.fetchone()
+
+            self.cursorsq.execute("SELECT ESTADO_BATERIA FROM ESTADO_BATERIA  WHERE ID_ESTADO = ?",(ca_des[0],))
+            ca_des1 = self.cursorsq.fetchone()
+
+            if ca_des1[0] == "ca":
                 tarefa3 = (100 - vgaya[0]) * tarefa2
 
-            elif ttdes == "des":
+            elif ca_des1[0] == "des":
                 tarefa3 = vgaya[0] * tarefa2
                 
             uy1 = convert_to_preferred_format(tarefa3)
