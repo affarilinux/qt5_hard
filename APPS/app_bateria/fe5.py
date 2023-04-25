@@ -53,15 +53,21 @@ class GUIFe2Bateria(SubJanela,QMainWindow):
         
         LABEL_INFO_NUM_T = QLabel(self)
         LABEL_INFO_NUM_T.move(NUM_100,240)
-        LABEL_INFO_NUM_T.setText("  * VALIDO ENTRE 1 A 100%.")
+        LABEL_INFO_NUM_T.setText("  * IDEAL ENTRE 20 E 80 %.")
         LABEL_INFO_NUM_T.resize(420,NUM_20)
         LABEL_INFO_NUM_T.setStyleSheet('QLabel{font: italic;font-size: 14px}')#
 
-        self.botao_c3= QPushButton("GRAFICO",self)
-        self.botao_c3.move(300,NUM_150)#janela
-        self.botao_c3.resize(NUM_100,25)
+        self.botao_c3= QPushButton("CARGA",self)
+        self.botao_c3.move(350,50)#janela
+        self.botao_c3.resize(160,25)
         self.botao_c3.setStyleSheet('QPushButton{background-color: #EE82EE; font: bold; font-size: 18px}')
         self.botao_c3.clicked.connect(self.inicial_grafo)
+
+        self.botao_c4= QPushButton("TEMPO CARGA",self)
+        self.botao_c4.move(350,100)#janela
+        self.botao_c4.resize(160,25)
+        self.botao_c4.setStyleSheet('QPushButton{background-color: #EE82EE; font: bold; font-size: 18px}')
+        self.botao_c4.clicked.connect(self.inicial_grafico1z)
 
         self.leitura_tb_BATE()
 

@@ -12,13 +12,13 @@ class SubJanela(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.j_bateria = Janela_bateria()
+        self.j_RAM = Janela_bateriaRam()
         self.J_TEMPERATURA =Janela_Temperatura()
         self.J_PROCESSADOR = Janela_Processador()
        
-        
+        #RAM
     def j_b(self):
-        self.j_bateria.show()
+        self.j_RAM.show()
 
     def j_t (self):
 
@@ -27,6 +27,7 @@ class SubJanela(QMainWindow):
     def J_P(self):
         self.J_PROCESSADOR.show()
 
+        #BATERIA
     def J_B(self):
         self.J_bateria = Janela_Bateria()
         self.J_bateria.show()
@@ -34,20 +35,23 @@ class SubJanela(QMainWindow):
     def inicial_grafo(self):
         
         self.grafo = Janela_grafico()
+
+    def inicial_grafico1z(self):
+        self.grafo1z = Janela_grafico1z()
         
 ##----------------------------------------------------------------------
 # /home/waghtom/Downloads/CTRL-C/envs/QT5_hard/qt5_hard/appsinit/init.py (python
 from APPS.app_ram.fe2 import GUIFe2Ram
 from APPS.app_ram.backe_ram import BeRam
 
-class Janela_bateria(
+class Janela_bateriaRam(
     GUIFe2Ram,
     BancoDadosInit,
     BeRam,
     QMainWindow):
     
     def __init__(self):
-        super(Janela_bateria, self).__init__()        
+        super(Janela_bateriaRam, self).__init__()        
 
         self.setGeometry(NUM_600, NUM_200, NUM_500, NUM_300) #j-XY app-XY
         self.setStyleSheet("background-color: #B0E0E6")#
@@ -110,7 +114,7 @@ class Janela_Bateria(
     def __init__(self):
         super(Janela_Bateria, self).__init__()        
 
-        self.setGeometry(NUM_600, NUM_200, 500, 300) #j-XY app-XY
+        self.setGeometry(NUM_600, NUM_200, 600, 300) #j-XY app-XY
         self.setStyleSheet("background-color: #B0E0E6")#
         self.setWindowTitle("{}- {}".format(HARDWARE_LT,BATERIA_LT))
 
@@ -129,6 +133,19 @@ class Janela_grafico(
         super(Janela_grafico, self).__init__()        
 
         self.canvas()
+
+from CANVAShorabat.canfe1a import Guicanvasfe1a
+from CANVAShorabat.canbe1a import Guicanvasbe1a
+
+class Janela_grafico1z(
+    BancoDadosInit,
+    Guicanvasfe1a,Guicanvasbe1a,
+    QMainWindow):
+    
+    def __init__(self):
+        super(Janela_grafico1z, self).__init__()        
+
+        self.canvas1a()
 
         
 

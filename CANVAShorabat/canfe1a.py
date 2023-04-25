@@ -7,14 +7,36 @@ from variaveis_uni.universal import QICONE_BARRA_DE_TAREFA
 
 import pyqtgraph as pg
 
-class Guicanvasfe(QMainWindow):
+class Guicanvasfe1a(QMainWindow):
 
-    def canvas(self):
+    def canvas1a(self):
 
         self.ativar_banco()
 
         self.cursorsq.execute("SELECT count(ID_GRAFO) FROM BATERIA_PC")
-        ctto = self.cursorsq.fetchone()
+        a1ctto = self.cursorsq.fetchone()
+
+        listtcar = []
+        sdffi = 0
+        
+        for i in range(1,a1ctto[0] + 1):
+
+            self.cursorsq.execute("SELECT tempo_carga,TEMPO_MEDIO FROM MEDIA_TEMPO  WHERE id_ex = ?",(i,))
+            vgaa = self.cursorsq.fetchone()
+
+            self.cursorsq.execute("SELECT VALOR_GRAFO FROM BATERIA_PC   WHERE ID_GRAFO = ?",(i,))
+            SEI = self.cursorsq.fetchone()
+
+            self.cursorsq.execute("SELECT BATER FROM BATER  WHERE ID_BATER = ?",(SEI[0],))
+            VIDA = self.cursorsq.fetchone()
+
+            SDD = vgaa[1] * VIDA[0]
+            
+            listtcar.append(SDD)
+            
+            if SDD >= sdffi:
+
+                sdffi = SDD
 
         self.plt = pg.plot()
         
@@ -22,14 +44,14 @@ class Guicanvasfe(QMainWindow):
         self.plt.addLegend() 
         self.plt.setLabel('left', 'NÍVEL CARGA', units='%') 
         self.plt.setLabel('bottom', 'TEMPO', units='T') 
-        self.plt.setXRange(0, ctto[0]) 
-        self.plt.setYRange(0, 100)
+        self.plt.setXRange(0, a1ctto[0]) 
+        self.plt.setYRange(0, sdffi)
         self.plt.setWindowTitle( 'BATERIA' )
         self.plt.move(400,550)
         self.plt.resize(1000,400)
         self.plt.setWindowIcon   ( QIcon ( QICONE_BARRA_DE_TAREFA ))   #icone da janela
 
-        self.canvasbe(self.plt,ctto[0])
+        self.canvasbef1(self.plt,a1ctto[0],listtcar)
 
         #funcao
         self.add_label()
@@ -74,7 +96,7 @@ class Guicanvasfe(QMainWindow):
             
             if zeta >= 1 and zeta <= ct[0]:
                 
-                self.cursorsq.execute("SELECT TEMPO_DATA,TEMPO_HORA FROM TEMPO  WHERE ID_TEMPO = ?",(zeta,))
+                '''self.cursorsq.execute("SELECT TEMPO_DATA,TEMPO_HORA FROM TEMPO  WHERE ID_TEMPO = ?",(zeta,))
                 vga = self.cursorsq.fetchone()
 
                 self.cursorsq.execute("SELECT DATA__ FROM DATA_  WHERE ID_DATA = ?",(vga[0],))
@@ -84,6 +106,18 @@ class Guicanvasfe(QMainWindow):
                 vga2 = self.cursorsq.fetchone()
 
                 xx ="DATA:{}, HORA:{}".format(vga1[0],vga2[0])
+                yy = int(point.y())'''
+
+                self.cursorsq.execute("SELECT TEMPO_DATA FROM TEMPO  WHERE ID_TEMPO = ?",(zeta,))
+                vga = self.cursorsq.fetchone()
+
+                self.cursorsq.execute("SELECT DATA__ FROM DATA_  WHERE ID_DATA = ?",(vga[0],))
+                vga1 = self.cursorsq.fetchone()
+
+                self.cursorsq.execute("SELECT tempo_carga FROM  MEDIA_TEMPO WHERE ID_MEDIA_TEMPO = ?",(zeta,))
+                vga2 = self.cursorsq.fetchone()
+
+                xx ="DATA:{}, TEMPO:{}".format(vga1[0],vga2[0])
                 yy = int(point.y())
 
             else:
