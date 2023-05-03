@@ -96,18 +96,6 @@ class Guicanvasfe1a(QMainWindow):
             
             if zeta >= 1 and zeta <= ct[0]:
                 
-                '''self.cursorsq.execute("SELECT TEMPO_DATA,TEMPO_HORA FROM TEMPO  WHERE ID_TEMPO = ?",(zeta,))
-                vga = self.cursorsq.fetchone()
-
-                self.cursorsq.execute("SELECT DATA__ FROM DATA_  WHERE ID_DATA = ?",(vga[0],))
-                vga1 = self.cursorsq.fetchone()
-
-                self.cursorsq.execute("SELECT HORAS FROM HORAS  WHERE ID_HORAS = ?",(vga[1],))
-                vga2 = self.cursorsq.fetchone()
-
-                xx ="DATA:{}, HORA:{}".format(vga1[0],vga2[0])
-                yy = int(point.y())'''
-
                 self.cursorsq.execute("SELECT TEMPO_DATA FROM TEMPO  WHERE ID_TEMPO = ?",(zeta,))
                 vga = self.cursorsq.fetchone()
 

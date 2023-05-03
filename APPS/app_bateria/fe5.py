@@ -59,15 +59,21 @@ class GUIFe2Bateria(SubJanela,QMainWindow):
 
         self.botao_c3= QPushButton("CARGA",self)
         self.botao_c3.move(350,50)#janela
-        self.botao_c3.resize(160,25)
+        self.botao_c3.resize(170,25)
         self.botao_c3.setStyleSheet('QPushButton{background-color: #EE82EE; font: bold; font-size: 18px}')
         self.botao_c3.clicked.connect(self.inicial_grafo)
 
         self.botao_c4= QPushButton("TEMPO CARGA",self)
         self.botao_c4.move(350,100)#janela
-        self.botao_c4.resize(160,25)
+        self.botao_c4.resize(170,25)
         self.botao_c4.setStyleSheet('QPushButton{background-color: #EE82EE; font: bold; font-size: 18px}')
         self.botao_c4.clicked.connect(self.inicial_grafico1z)
+
+        self.botao_c4= QPushButton("APAGAR DADOS",self)
+        self.botao_c4.move(350,265)#janela
+        self.botao_c4.resize(170,25)
+        self.botao_c4.setStyleSheet('QPushButton{background-color: #EE82EE; font: bold; font-size: 18px}')
+        self.botao_c4.clicked.connect(self.Apagarr)
 
         self.leitura_tb_BATE()
 

@@ -116,8 +116,6 @@ class EXEC_bateria(QMainWindow):
         self.cursorsq.execute("SELECT ID_DATA FROM DATA_   WHERE DATA__ = ?",(self.hj,))
         DTT = self.cursorsq.fetchone()
 
-        print(self.hj)
-
         ### FUNCAO INTERNA
         def ess(self,hrr,dtt):
 

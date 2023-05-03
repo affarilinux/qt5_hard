@@ -59,33 +59,7 @@ class BateriaBD(QMainWindow):
         
         self.commit_banco()
         self.sair_banco()
-        
-        ## segundos
-        ###-------------------------------------------------------------
-        '''
-
-        self.ativar_banco()
-
-        self.cursorsq.execute("SELECT SEGUNDO FROM  SEGUNDO  WHERE ID_SEG = ?",(NUM_1,))
-        SGD = self.cursorsq.fetchone()
-
-        if SGD == none:
-            self.cursorsq.execute(
-                "INSERT INTO SEGUNDO( SEGUNDO) VALUES (?)",(self.seconds,))
-
-        elif SGD != none:
-
-            self.cursorsq.execute("SELECT ID_SEG FROM SEGUNDO  WHERE SEGUNDO = ?",(self.seconds,))
-            SGD_2 = self.cursorsq.fetchone()
-                    
-            if SGD_2 == none:
-                self.cursorsq.execute(
-                    "INSERT INTO SEGUNDO( SEGUNDO) VALUES (?)",(self.seconds,))
-
-
-        self.commit_banco()
-        self.sair_banco()'''
-
+    
         ## nivel bateria
         ###-------------------------------------------------------------
         self.ativar_banco()

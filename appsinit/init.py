@@ -105,10 +105,11 @@ class Janela_Processador(
 
 from APPS.app_bateria.backe_bateria import BeBateria
 from APPS.app_bateria.fe5 import GUIFe2Bateria
+from banco_dados.apagar_dados import ApagarDados
 
 class Janela_Bateria(
     BancoDadosInit
-    ,BeBateria,GUIFe2Bateria,
+    ,BeBateria,GUIFe2Bateria,ApagarDados,
     QMainWindow):
     
     def __init__(self):
