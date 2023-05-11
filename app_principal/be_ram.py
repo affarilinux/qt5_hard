@@ -19,41 +19,45 @@ class BE_Ram(QMainWindow):
         #informações da memoria ram
         informacao           = psutil.virtual_memory ()
 
-        # puxa as informações e adiciona nas variaveis
-        total                = informacao.total
-        usada                = informacao.active
+        if not informacao:
+            self.BUTON_RAM.setText("Ram\n S\I")
 
-        # calcula porcentagm
-        calculo_por_centagem      = ( usada * NUM_100 ) / total
+        else:
+            # puxa as informações e adiciona nas variaveis
+            total                = informacao.total
+            usada                = informacao.active
 
-        # filtra o float
-        calculo_filtro_informacao = round ( calculo_por_centagem, NUM_2 )
+            # calcula porcentagm
+            calculo_por_centagem      = ( usada * NUM_100 ) / total
 
-        ##---------------------------------------------------------------------
-        self.ativar_banco()
-        
-        self.cursorsq.execute("SELECT RAM_MINIMO,RAM_MAXIMO,RAM_APRESENTAR FROM  RAM  WHERE ID_RAM = ?",(NUM_1,))
-        sel = self.cursorsq.fetchone()
+            # filtra o float
+            calculo_filtro_informacao = round ( calculo_por_centagem, NUM_2 )
 
-        if sel[NUM_2] == NUM_1:
+            ##---------------------------------------------------------------------
+            self.ativar_banco()
             
-            if calculo_filtro_informacao < sel[NUM_0]:
+            self.cursorsq.execute("SELECT RAM_MINIMO,RAM_MAXIMO,RAM_APRESENTAR FROM  RAM  WHERE ID_RAM = ?",(NUM_1,))
+            sel = self.cursorsq.fetchone()
 
-                self.ap_ram_processo('--',sel,NUM_0,calculo_filtro_informacao)
-               
-            elif calculo_filtro_informacao >= sel[NUM_0] and calculo_filtro_informacao <= sel[NUM_1]:
-
-                self.ap_ram_normal(calculo_filtro_informacao)
-            
-            elif calculo_filtro_informacao > sel[NUM_1]:
+            if sel[NUM_2] == NUM_1:
                 
-                self.ap_ram_processo('++',sel,NUM_1,calculo_filtro_informacao)
-                                
-        elif sel[NUM_2] == NUM_0:
-    
-            self.ap_ram_normal(calculo_filtro_informacao)
+                if calculo_filtro_informacao < sel[NUM_0]:
 
-        self.sair_banco()
+                    self.ap_ram_processo('--',sel,NUM_0,calculo_filtro_informacao)
+                
+                elif calculo_filtro_informacao >= sel[NUM_0] and calculo_filtro_informacao <= sel[NUM_1]:
+
+                    self.ap_ram_normal(calculo_filtro_informacao)
+                
+                elif calculo_filtro_informacao > sel[NUM_1]:
+                    
+                    self.ap_ram_processo('++',sel,NUM_1,calculo_filtro_informacao)
+                                    
+            elif sel[NUM_2] == NUM_0:
+        
+                self.ap_ram_normal(calculo_filtro_informacao)
+
+            self.sair_banco()
 
     ##------------------------------------------------------------------
     def ap_ram_normal(self,cfi):

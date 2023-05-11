@@ -18,53 +18,59 @@ class Processador100(QMainWindow):
         # chama os dados para a janela
         informacao_sistema_1 = psutil.cpu_freq ()
 
-        # puxa as informações e adiciona nas variaveis
-        maximo_processador   = informacao_sistema_1.max
-        dados_presente       = informacao_sistema_1.current
+        if not informacao_sistema_1:
 
-         # calcula porcentagm
-        calculo_processos_dados     = ( dados_presente * NUM_100 ) / maximo_processador        
+            self.BUTON_PROCESSADOR.setText("Processador\n S\I")
 
-        # filtra o float
-        filtra_calculo_sistema = round ( calculo_processos_dados, NUM_2 )
+        else:
 
-        ##---------------------------------------------------------------------
-        self.ativar_banco()
+            # puxa as informações e adiciona nas variaveis
+            maximo_processador   = informacao_sistema_1.max
+            dados_presente       = informacao_sistema_1.current
+
+            # calcula porcentagm
+            calculo_processos_dados     = ( dados_presente * NUM_100 ) / maximo_processador        
+
+            # filtra o float
+            filtra_calculo_sistema = round ( calculo_processos_dados, NUM_2 )
+
+            ##---------------------------------------------------------------------
+            self.ativar_banco()
+            
+            self.cursorsq.execute("SELECT PROC_MIN,PROC_MAX,PROC_APRESENTAR FROM  PROCESSADOR  WHERE ID_PROC = ?",(NUM_1,))
+            PRC = self.cursorsq.fetchone()
+
+            if PRC[NUM_2] == NUM_1:
+
+                if filtra_calculo_sistema >= PRC[NUM_1]:
+
+                    self.var_ppc = self.var_ppc + NUM_1
+
+                    if self.var_ppc == NUM_1:
+
+                        self.BUTON_PROCESSADOR.setText("{}\n ++ {} %".format(PROCESSADOR_LT,PRC[NUM_1]))
+
+                        self.funcao_if_son()
+
+                    elif self.var_ppc != NUM_1:
+
+                        self.proc_apresentar(filtra_calculo_sistema)
+
+                        if self.var_ppc == NUM_3:
+                            self.var_ppc = NUM_0
+
+                elif filtra_calculo_sistema <= PRC[NUM_1]:
         
-        self.cursorsq.execute("SELECT PROC_MIN,PROC_MAX,PROC_APRESENTAR FROM  PROCESSADOR  WHERE ID_PROC = ?",(NUM_1,))
-        PRC = self.cursorsq.fetchone()
-
-        if PRC[NUM_2] == NUM_1:
-
-            if filtra_calculo_sistema >= PRC[NUM_1]:
-
-                self.var_ppc = self.var_ppc + NUM_1
-
-                if self.var_ppc == NUM_1:
-
-                    self.BUTON_PROCESSADOR.setText("{}\n ++ {} %".format(PROCESSADOR_LT,PRC[NUM_1]))
-
-                    self.funcao_if_son()
-
-                elif self.var_ppc != NUM_1:
-
                     self.proc_apresentar(filtra_calculo_sistema)
+                    self.zero_var_ppc()
 
-                    if self.var_ppc == NUM_3:
-                        self.var_ppc = NUM_0
+            elif PRC[NUM_2] == NUM_0:
 
-            elif filtra_calculo_sistema <= PRC[NUM_1]:
-    
                 self.proc_apresentar(filtra_calculo_sistema)
                 self.zero_var_ppc()
-
-        elif PRC[NUM_2] == NUM_0:
-
-            self.proc_apresentar(filtra_calculo_sistema)
-            self.zero_var_ppc()
-            
-        self.commit_banco()
-        self.sair_banco()
+                
+            self.commit_banco()
+            self.sair_banco()
 
     def zero_var_ppc(self):
 

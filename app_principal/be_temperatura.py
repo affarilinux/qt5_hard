@@ -22,24 +22,30 @@ class Temperatura100(QMainWindow):
         core_temp1       = psutil.sensors_temperatures()['coretemp'][NUM_1]
         core_temp2       = psutil.sensors_temperatures()['coretemp'][NUM_2]
 
-        processador_temp_cur = processador_temp.current
+        if not core_temp:
 
-        core_temp_cur = core_temp.current
-        core_temp1_cur = core_temp1.current
-        core_temp2_cur = core_temp2.current
+            self.BUTON_TM.setText("Temperatura\n S\I")
 
-        try:
-            wifi_temp    = psutil.sensors_temperatures()['iwlwifi_1'][NUM_0]
-            wifi_temp_cur  = wifi_temp.current
+        else:
 
-            self.calculo_temperatura (processador_temp_cur, core_temp_cur,
-                core_temp1_cur,core_temp2_cur, wifi_temp_cur,NUM_5 )
+            processador_temp_cur = processador_temp.current
 
-            
-        except KeyError:
+            core_temp_cur = core_temp.current
+            core_temp1_cur = core_temp1.current
+            core_temp2_cur = core_temp2.current
 
-            self.calculo_temperatura (processador_temp_cur, core_temp_cur,
-                core_temp1_cur,core_temp2_cur, NUM_0,NUM_4 )
+            try:
+                wifi_temp    = psutil.sensors_temperatures()['iwlwifi_1'][NUM_0]
+                wifi_temp_cur  = wifi_temp.current
+
+                self.calculo_temperatura (processador_temp_cur, core_temp_cur,
+                    core_temp1_cur,core_temp2_cur, wifi_temp_cur,NUM_5 )
+
+                
+            except KeyError:
+
+                self.calculo_temperatura (processador_temp_cur, core_temp_cur,
+                    core_temp1_cur,core_temp2_cur, NUM_0,NUM_4 )
 
          ##---------------------------------------------------------------------
        
